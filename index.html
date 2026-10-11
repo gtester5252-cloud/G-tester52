@@ -68,12 +68,37 @@
       box-shadow: 0 5px 20px rgba(230, 57, 70, 0.4);
     }
 
+    /* Search Bar Container */
+    .search-container {
+      width: 90%;
+      max-width: 600px;
+      margin: 25px auto 10px;
+    }
+
+    .search-input {
+      width: 100%;
+      background: #141419;
+      border: 1px solid #281a1e;
+      color: #ffffff;
+      padding: 14px 20px;
+      border-radius: 30px;
+      font-size: 15px;
+      outline: none;
+      transition: .3s;
+      text-align: center;
+    }
+
+    .search-input:focus {
+      border-color: #e63946;
+      box-shadow: 0 0 15px rgba(230, 57, 70, 0.2);
+    }
+
     /* Category Nav */
     .category-nav {
       display: flex;
       justify-content: center;
       gap: 12px;
-      margin: 30px 0 10px;
+      margin: 20px 0 10px;
       flex-wrap: wrap;
     }
 
@@ -274,8 +299,36 @@
     .product p {
       color: #a0a0ab;
       font-size: 13px;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
       line-height: 1.4;
+    }
+
+    /* Volume Selector Styling */
+    .volume-selector {
+      margin-bottom: 12px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .volume-selector label {
+      font-size: 12px;
+      color: #b0b0b8;
+    }
+
+    .volume-select {
+      background: #0a0a0c;
+      color: #fff;
+      border: 1px solid #2c2c36;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 13px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .volume-select:focus {
+      border-color: #e63946;
     }
 
     .price {
@@ -307,6 +360,31 @@
 
     .add-btn:hover {
       background: #d62828;
+    }
+
+    /* Floating WhatsApp Button */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 25px;
+      left: 25px;
+      background-color: #25d366;
+      color: #fff;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+      box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+      z-index: 1000;
+      transition: .3s;
+      text-decoration: none;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      background-color: #20ba5a;
     }
 
     /* Notification Toast */
@@ -488,6 +566,11 @@
     </button>
   </header>
 
+  <!-- Search Bar -->
+  <div class="search-container">
+    <input type="text" id="searchInput" class="search-input" placeholder="🔍 ابحث عن العطر الذي تفضله..." onkeyup="searchProducts()">
+  </div>
+
   <!-- Category Nav -->
   <div class="category-nav">
     <button class="filter-btn active" onclick="filterCategory('welcome', this)">الرئيسية ✨</button>
@@ -535,11 +618,11 @@
     <!-- ================= 2. Products Section ================= -->
     <div class="products-wrapper hide" id="productsWrapper">
       
-      <div class="products">
+      <div class="products" id="productsContainer">
 
         <!-- ================= قسم العطور الرجالية ================= -->
 
-        <div class="product" data-category="men">
+        <div class="product" data-category="men" data-name="Musamam Black Intense Lattafa">
           <img src="images/Musamam Black Intense.jpeg" onerror="this.onerror=null; this.src='Musamam Black Intense.jpeg';" alt="Musamam Black Intense">
           <div class="product-info">
             <div>
@@ -555,7 +638,7 @@
           </div>
         </div>
 
-        <div class="product" data-category="men">
+        <div class="product" data-category="men" data-name="Asad Elixir Lattafa">
           <img src="images/Asad Elixir.jpeg" onerror="this.onerror=null; this.src='Asad Elixir.jpg';" alt="Asad Elixir">
           <div class="product-info">
             <div>
@@ -571,7 +654,7 @@
           </div>
         </div>
 
-        <div class="product" data-category="men">
+        <div class="product" data-category="men" data-name="Khamrah Qahwa Lattafa">
           <img src="images/Khamrah Qahwa.jpeg" onerror="this.onerror=null; this.src='Khamrah Qahwa.jpg';" alt="Khamrah Qahwa">
           <div class="product-info">
             <div>
@@ -587,7 +670,7 @@
           </div>
         </div>
 
-        <div class="product" data-category="men">
+        <div class="product" data-category="men" data-name="Khamrah Classic Lattafa">
           <img src="images/Khamrah Classic.jpeg" onerror="this.onerror=null; this.src='Khamrah Classic.jpeg';" alt="Khamrah Classic">
           <div class="product-info">
             <div>
@@ -603,7 +686,7 @@
           </div>
         </div>
 
-        <div class="product" data-category="men">
+        <div class="product" data-category="men" data-name="Urban Man Paradise">
           <img src="images/Urban Man Paradise.jpeg" onerror="this.onerror=null; this.src='Urban Man Paradise.jpg';" alt="Urban Man Paradise">
           <div class="product-info">
             <div>
@@ -619,7 +702,7 @@
           </div>
         </div>
 
-        <div class="product" data-category="men">
+        <div class="product" data-category="men" data-name="Maison Asrar Cascade">
           <img src="images/Maison Asrar - Cascade.jpeg" onerror="this.onerror=null; this.src='Maison Asrar - Cascade.jpg';" alt="Cascade Maison Asrar">
           <div class="product-info">
             <div>
@@ -635,7 +718,7 @@
           </div>
         </div>
 
-        <div class="product" data-category="men">
+        <div class="product" data-category="men" data-name="Maison Asrar Wadi">
           <img src="images/Maison Asrar - Wadi.jpeg" onerror="this.onerror=null; this.src='Maison Asrar - Wadi.jpg';" alt="Wadi Maison Asrar">
           <div class="product-info">
             <div>
@@ -651,7 +734,7 @@
           </div>
         </div>
 
-        <div class="product" data-category="men">
+        <div class="product" data-category="men" data-name="Maison Asrar Tornado">
           <img src="images/Maison Asrar - Tornado.jpeg" onerror="this.onerror=null; this.src='Maison Asrar - Tornado.jpg';" alt="Tornado Maison Asrar">
           <div class="product-info">
             <div>
@@ -668,98 +751,146 @@
         </div>
 
 
-        <!-- ================= قسم التقسيمات (تمت تعبئته بالصور الجديدة) ================= -->
+        <!-- ================= قسم التقسيمات مع Volume Selector ================= -->
         
-        <div class="product" data-category="decants">
-          <img src="images/Valentino - uomo born in roma Intense.jpeg" onerror="this.onerror=null; this.src='images/valentino.jpg';" alt="Valentino Born in Roma Coral Fantasy">
+        <div class="product" data-category="decants" data-name="Valentino Born in Roma Coral Fantasy">
+          <img src="images/Valentino - uomo born in roma Intense.jpeg" onerror="this.onerror=null; this.src='images/valentino.jpg';" alt="Valentino Coral Fantasy">
           <div class="product-info">
             <div>
-              <h3>Valentino - Coral Fantasy (10ml)</h3>
+              <h3>Valentino - Coral Fantasy</h3>
               <p>نفحات التفاح الأحمر والتوابل والتبغ المنعش.</p>
+              
+              <div class="volume-selector">
+                <label>الحجم:</label>
+                <select class="volume-select" id="vol-valentino" onchange="updatePrice(this, 'price-valentino', 150, 270)">
+                  <option value="5ml">5ml (150 DH)</option>
+                  <option value="10ml" selected>10ml (270 DH)</option>
+                </select>
+              </div>
             </div>
             <div>
-              <div class="price">150 DH</div>
-              <button class="add-btn" onclick="addToCart('Valentino - Coral Fantasy (Decant)', 150)">
+              <div class="price" id="price-valentino">270 DH</div>
+              <button class="add-btn" onclick="addDecantToCart('Valentino - Coral Fantasy', 'vol-valentino', 'price-valentino')">
                 أضف إلى السلة
               </button>
             </div>
           </div>
         </div>
 
-        <div class="product" data-category="decants">
+        <div class="product" data-category="decants" data-name="Stronger With You Intensely">
           <img src="images/stronger with you intensly (10ml).jpeg" onerror="this.onerror=null; this.src='images/armani_intensely.jpg';" alt="Stronger With You Intensely">
           <div class="product-info">
             <div>
-              <h3>Stronger With You Intensely(10ml)</h3>
+              <h3>Stronger With You Intensely</h3>
               <p>مزيج دافئ من الفانيليا، العنبر، والتوابل الفاخرة.</p>
+              
+              <div class="volume-selector">
+                <label>الحجم:</label>
+                <select class="volume-select" id="vol-intensely" onchange="updatePrice(this, 'price-intensely', 160, 290)">
+                  <option value="5ml">5ml (160 DH)</option>
+                  <option value="10ml" selected>10ml (290 DH)</option>
+                </select>
+              </div>
             </div>
             <div>
-              <div class="price">160 DH</div>
-              <button class="add-btn" onclick="addToCart('Stronger With You Intensely (Decant)', 160)">
+              <div class="price" id="price-intensely">290 DH</div>
+              <button class="add-btn" onclick="addDecantToCart('Stronger With You Intensely', 'vol-intensely', 'price-intensely')">
                 أضف إلى السلة
               </button>
             </div>
           </div>
         </div>
 
-        <div class="product" data-category="decants">
+        <div class="product" data-category="decants" data-name="Le Male Elixir Jean Paul Gaultier">
           <img src="images/le male elixir (10ml).jpeg" onerror="this.onerror=null; this.src='images/le_male_elixir.jpg';" alt="Le Male Elixir">
           <div class="product-info">
             <div>
-              <h3>Le Male Elixir(10ml)</h3>
+              <h3>Le Male Elixir</h3>
               <p>Jean Paul Gaultier - العسل، الفانيليا والعنبر الجريء.</p>
+              
+              <div class="volume-selector">
+                <label>الحجم:</label>
+                <select class="volume-select" id="vol-elixir" onchange="updatePrice(this, 'price-elixir', 170, 310)">
+                  <option value="5ml">5ml (170 DH)</option>
+                  <option value="10ml" selected>10ml (310 DH)</option>
+                </select>
+              </div>
             </div>
             <div>
-              <div class="price">180 DH</div>
-              <button class="add-btn" onclick="addToCart('Le Male Elixir (Decant)', 180)">
+              <div class="price" id="price-elixir">310 DH</div>
+              <button class="add-btn" onclick="addDecantToCart('Le Male Elixir', 'vol-elixir', 'price-elixir')">
                 أضف إلى السلة
               </button>
             </div>
           </div>
         </div>
 
-        <div class="product" data-category="decants">
+        <div class="product" data-category="decants" data-name="Dior Homme Intense">
           <img src="images/dior homme intense (10ml).jpeg" onerror="this.onerror=null; this.src='images/dior_homme_intense.jpg';" alt="Dior Homme Intense">
           <div class="product-info">
             <div>
-              <h3>Dior Homme Intense(10ml)</h3>
+              <h3>Dior Homme Intense</h3>
               <p>أناقة الأخشاب الفاخرة مع نفحات السوسن الساحرة.</p>
+              
+              <div class="volume-selector">
+                <label>الحجم:</label>
+                <select class="volume-select" id="vol-dior" onchange="updatePrice(this, 'price-dior', 180, 330)">
+                  <option value="5ml">5ml (180 DH)</option>
+                  <option value="10ml" selected>10ml (330 DH)</option>
+                </select>
+              </div>
             </div>
             <div>
-              <div class="price">190 DH</div>
-              <button class="add-btn" onclick="addToCart('Dior Homme Intense (Decant)', 190)">
+              <div class="price" id="price-dior">330 DH</div>
+              <button class="add-btn" onclick="addDecantToCart('Dior Homme Intense', 'vol-dior', 'price-dior')">
                 أضف إلى السلة
               </button>
             </div>
           </div>
         </div>
 
-        <div class="product" data-category="decants">
+        <div class="product" data-category="decants" data-name="Stronger With You Absolutely">
           <img src="images/stronger with you absolutly (10ml).jpeg" onerror="this.onerror=null; this.src='images/armani_absolutely.jpg';" alt="Stronger With You Absolutely">
           <div class="product-info">
             <div>
-              <h3>Stronger With You Absolutely(10ml)</h3>
+              <h3>Stronger With You Absolutely</h3>
               <p>Rum, Cedarwood & Vanilla - عبير جريء ودافئ لا يُقاوم.</p>
+              
+              <div class="volume-selector">
+                <label>الحجم:</label>
+                <select class="volume-select" id="vol-absolutely" onchange="updatePrice(this, 'price-absolutely', 165, 300)">
+                  <option value="5ml">5ml (165 DH)</option>
+                  <option value="10ml" selected>10ml (300 DH)</option>
+                </select>
+              </div>
             </div>
             <div>
-              <div class="price">170 DH</div>
-              <button class="add-btn" onclick="addToCart('Stronger With You Absolutely (Decant)', 170)">
+              <div class="price" id="price-absolutely">300 DH</div>
+              <button class="add-btn" onclick="addDecantToCart('Stronger With You Absolutely', 'vol-absolutely', 'price-absolutely')">
                 أضف إلى السلة
               </button>
             </div>
           </div>
         </div>
 
-        <div class="product" data-category="decants">
+        <div class="product" data-category="decants" data-name="Stronger With You Powerfully">
           <img src="images/stronger with you powefully (10ml).jpeg" onerror="this.onerror=null; this.src='images/armani_powerfully.jpg';" alt="Stronger With You Powerfully">
           <div class="product-info">
             <div>
-              <h3>Stronger With You Powerfully(10ml)</h3>
+              <h3>Stronger With You Powerfully</h3>
               <p>نفحات جلدية وعميقة تعكس القوة والأناقة الفائقة.</p>
+              
+              <div class="volume-selector">
+                <label>الحجم:</label>
+                <select class="volume-select" id="vol-powerfully" onchange="updatePrice(this, 'price-powerfully', 170, 310)">
+                  <option value="5ml">5ml (170 DH)</option>
+                  <option value="10ml" selected>10ml (310 DH)</option>
+                </select>
+              </div>
             </div>
             <div>
-              <div class="price">175 DH</div>
-              <button class="add-btn" onclick="addToCart('Stronger With You Powerfully (Decant)', 175)">
+              <div class="price" id="price-powerfully">310 DH</div>
+              <button class="add-btn" onclick="addDecantToCart('Stronger With You Powerfully', 'vol-powerfully', 'price-powerfully')">
                 أضف إلى السلة
               </button>
             </div>
@@ -769,7 +900,7 @@
 
         <!-- ================= قسم العطور النسائية ================= -->
 
-        <div class="product" data-category="women">
+        <div class="product" data-category="women" data-name="Yara Candy Lattafa">
           <div class="badge">+ CADEAU</div>
           <img src="images/yara candy.jpeg" onerror="this.onerror=null; this.src='images/yara candy.jpg';" alt="Yara Candy">
           <div class="product-info">
@@ -788,7 +919,7 @@
           </div>
         </div>
 
-        <div class="product" data-category="women">
+        <div class="product" data-category="women" data-name="Yara Tous Lattafa">
           <div class="badge">+ CADEAU</div>
           <img src="images/yara tous.jpeg" onerror="this.onerror=null; this.src='images/yara tous.jpg';" alt="Yara Tous">
           <div class="product-info">
@@ -807,7 +938,7 @@
           </div>
         </div>
 
-        <div class="product" data-category="women">
+        <div class="product" data-category="women" data-name="Urban Women Paradise">
           <div class="badge">+ CADEAU</div>
           <img src="images/urban women paradise.jpeg" onerror="this.onerror=null; this.src='images/urban women.jpg';" alt="Urban Women">
           <div class="product-info">
@@ -826,7 +957,7 @@
           </div>
         </div>
 
-        <div class="product" data-category="women">
+        <div class="product" data-category="women" data-name="Khair Confection Paris Corner">
           <div class="badge">+ CADEAU</div>
           <img src="images/khair confection.jpeg" onerror="this.onerror=null; this.src='images/khair confection.jpg';" alt="Khair Confection">
           <div class="product-info">
@@ -845,7 +976,7 @@
           </div>
         </div>
 
-        <div class="product" data-category="women">
+        <div class="product" data-category="women" data-name="Khair Fusion Paris Corner">
           <div class="badge">+ CADEAU</div>
           <img src="images/khair fusion.jpeg" onerror="this.onerror=null; this.src='images/khair fusion.jpg';" alt="Khair Fusion">
           <div class="product-info">
@@ -864,7 +995,7 @@
           </div>
         </div>
 
-        <div class="product" data-category="women">
+        <div class="product" data-category="women" data-name="Heibah عطر الهيبة">
           <div class="badge">+ CADEAU</div>
           <img src="images/heibah.jpeg" onerror="this.onerror=null; this.src='images/heibah.jpg';" alt="Heibah">
           <div class="product-info">
@@ -883,7 +1014,7 @@
           </div>
         </div>
 
-        <div class="product" data-category="women">
+        <div class="product" data-category="women" data-name="Marshmallow Blush">
           <div class="badge">+ CADEAU</div>
           <img src="images/marshmallow blush.jpeg" onerror="this.onerror=null; this.src='images/marshmallow blush.jpg';" alt="Marshmallow Blush">
           <div class="product-info">
@@ -902,7 +1033,7 @@
           </div>
         </div>
 
-        <div class="product" data-category="women">
+        <div class="product" data-category="women" data-name="Elysia Arabe Rouge">
           <div class="badge">+ CADEAU</div>
           <img src="images/elysia arabe rouge.jpeg" onerror="this.onerror=null; this.src='images/elysia arabe rouge.jpg';" alt="Elysia Arabe Rouge">
           <div class="product-info">
@@ -921,7 +1052,7 @@
           </div>
         </div>
 
-        <div class="product" data-category="women">
+        <div class="product" data-category="women" data-name="Elysia Marshmallow">
           <div class="badge">+ CADEAU</div>
           <img src="images/elysia marshmallow.jpeg" onerror="this.onerror=null; this.src='images/elysia marshmallow.jpg';" alt="Elysia Marshmallow">
           <div class="product-info">
@@ -978,6 +1109,11 @@
 
   </main>
 
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/212719260682" class="whatsapp-float" target="_blank" title="تواصل معنا عبر واتساب">
+    💬
+  </a>
+
   <div id="toast">تمت إضافة العطر إلى السلة بنجاح! 🛍️</div>
 
   <footer>
@@ -991,6 +1127,28 @@
 
     updateCart();
 
+    // Volume price update for decants
+    function updatePrice(selectElement, priceElementId, price5ml, price10ml) {
+      const priceEl = document.getElementById(priceElementId);
+      if (selectElement.value === '5ml') {
+        priceEl.textContent = price5ml + " DH";
+      } else {
+        priceEl.textContent = price10ml + " DH";
+      }
+    }
+
+    // Add Decant with selected volume
+    function addDecantToCart(name, selectId, priceId) {
+      const selectEl = document.getElementById(selectId);
+      const volume = selectEl.value;
+      const priceText = document.getElementById(priceId).textContent;
+      const price = parseInt(priceText);
+
+      const fullName = `${name} (${volume})`;
+      addToCart(fullName, price);
+    }
+
+    // Filter Categories
     function filterCategory(category, btnElement) {
       const welcomeSection = document.getElementById('welcomeSection');
       const productsWrapper = document.getElementById('productsWrapper');
@@ -1025,6 +1183,35 @@
       if(category === 'women') targetBtn = buttons[3];
       
       filterCategory(category, targetBtn);
+    }
+
+    // Search Products Function
+    function searchProducts() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const productsWrapper = document.getElementById('productsWrapper');
+      const welcomeSection = document.getElementById('welcomeSection');
+      const products = document.querySelectorAll('.product');
+      const buttons = document.querySelectorAll('.filter-btn');
+
+      if (input.trim() !== "") {
+        welcomeSection.style.display = 'none';
+        productsWrapper.classList.remove('hide');
+        buttons.forEach(btn => btn.classList.remove('active'));
+
+        products.forEach(product => {
+          const name = product.getAttribute('data-name').toLowerCase();
+          if (name.includes(input)) {
+            product.classList.remove('hide');
+          } else {
+            product.classList.add('hide');
+          }
+        });
+      } else {
+        // If search is empty, return to welcome view
+        welcomeSection.style.display = 'block';
+        productsWrapper.classList.add('hide');
+        buttons[0].classList.add('active');
+      }
     }
 
     function showToast(message) {
@@ -1159,7 +1346,6 @@
 
       cart = [];
       saveAndUpdateCart();
-      document.getElementById("orderForm->reset()")();
       document.getElementById("orderForm").reset();
     });
   </script>
