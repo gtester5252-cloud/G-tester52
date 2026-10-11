@@ -126,7 +126,7 @@
       background: #141419;
       border: 1px solid #281a1e;
       border-radius: 20px;
-      padding: 40px 25px;
+      padding: 45px 30px;
       text-align: center;
       margin-bottom: 30px;
       background:
@@ -136,7 +136,7 @@
     }
 
     .welcome-section h2 {
-      font-size: clamp(26px, 4vw, 38px);
+      font-size: clamp(28px, 4vw, 40px);
       margin-bottom: 15px;
       color: #ffffff;
     }
@@ -148,9 +148,20 @@
     .welcome-section p {
       color: #b0b0b8;
       font-size: 16px;
-      max-width: 700px;
-      margin: 0 auto 30px;
-      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto 25px;
+      line-height: 1.8;
+    }
+
+    .about-brand {
+      color: #90909b;
+      font-size: 14px;
+      max-width: 750px;
+      margin: 0 auto 35px;
+      line-height: 1.7;
+      border-top: 1px solid #22222b;
+      border-bottom: 1px solid #22222b;
+      padding: 15px 0;
     }
 
     /* Features Grid */
@@ -158,7 +169,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
-      margin-bottom: 35px;
+      margin-bottom: 15px;
     }
 
     .feature-card {
@@ -184,41 +195,6 @@
       color: #a0a0ab;
       font-size: 13px;
       margin-bottom: 0;
-    }
-
-    .welcome-actions {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    .action-btn {
-      background: #e63946;
-      color: #ffffff;
-      border: none;
-      padding: 14px 28px;
-      border-radius: 12px;
-      font-weight: bold;
-      font-size: 16px;
-      cursor: pointer;
-      transition: .3s;
-    }
-
-    .action-btn:hover {
-      background: #d62828;
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(230, 57, 70, 0.4);
-    }
-
-    .action-btn.secondary {
-      background: transparent;
-      border: 1px solid #e63946;
-      color: #ffffff;
-    }
-
-    .action-btn.secondary:hover {
-      background: rgba(230, 57, 70, 0.1);
     }
 
     /* Products Container */
@@ -586,6 +562,10 @@
       <h2>مرحباً بكم في عالم <span>G-TESTER</span></h2>
       <p>وجهتكم الأولى لأفخم العطور الشرقية والعالمية المستوردة. نضمن لكم الجودة العالية، الأصالة، وثبات الروائح الذي يدوم طويلاً.</p>
 
+      <div class="about-brand">
+        نحن في <strong>G-TESTER</strong> نؤمن بأن العطر هو بصمتك الخاصة التي تعكس شخصيتك وتترك انطباعاً لا يُمحى. نوفر لك تشكيلة مختارة بعناية فائقة من أروع العطور الرجالية والنسائية، بالإضافة إلى خدمة التقسيمات (Decants) الأصلية لتكتشف وتجربة أرقى الدور العالمية والعربية بكل أريحية.
+      </div>
+
       <div class="features-grid">
         <div class="feature-card">
           <div class="icon">✨</div>
@@ -607,11 +587,6 @@
           <h4>الدفع عند الاستلام</h4>
           <p>افحص طلبك وتأكد منه قبل إتمام عملية الدفع.</p>
         </div>
-      </div>
-
-      <div class="welcome-actions">
-        <button class="action-btn" onclick="openCategory('men')">تسوق عطور الرجال ♂️</button>
-        <button class="action-btn secondary" onclick="openCategory('women')">تسوق عطور النساء ♀️</button>
       </div>
     </section>
 
@@ -1175,16 +1150,6 @@
       }
     }
 
-    function openCategory(category) {
-      const buttons = document.querySelectorAll('.filter-btn');
-      let targetBtn;
-      if(category === 'men') targetBtn = buttons[1];
-      if(category === 'decants') targetBtn = buttons[2];
-      if(category === 'women') targetBtn = buttons[3];
-      
-      filterCategory(category, targetBtn);
-    }
-
     // Search Products Function
     function searchProducts() {
       const input = document.getElementById('searchInput').value.toLowerCase();
@@ -1308,7 +1273,7 @@
       });
     }
 
-    document.getElementById("orderForm").addEventListener("submit", function(event) {
+    document.getElementById("orderForm").addEventListener("submit", function(event)  {
       event.preventDefault();
 
       if (cart.length === 0) {
