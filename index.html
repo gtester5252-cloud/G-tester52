@@ -18,14 +18,31 @@
       color: #f1f1f1;
     }
 
-    /* Top Bar */
+    /* Top Bar Animation */
     .announcement-bar {
       background: #e63946;
       color: #fff;
-      text-align: center;
-      padding: 8px;
+      padding: 8px 0;
       font-size: 13px;
       font-weight: bold;
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+    }
+
+    .announcement-text {
+      display: inline-block;
+      padding-left: 100%;
+      animation: marquee 12s linear infinite;
+    }
+
+    @keyframes marquee {
+      0% {
+        transform: translateX(-100%);
+      }
+      100% {
+        transform: translateX(0%);
+      }
     }
 
     /* Header */
@@ -164,7 +181,6 @@
       line-height: 1.8;
     }
 
-    /* Promo Video & Custom Banners Styling */
     .promo-video-container, .category-banner-container {
       margin: 25px auto 30px;
       width: 100%;
@@ -271,6 +287,7 @@
       flex-direction: column;
       justify-content: space-between;
       position: relative;
+      cursor: pointer;
     }
 
     .product.hide {
@@ -357,7 +374,6 @@
       }
     }
 
-    /* Volume Selector Styling */
     .volume-selector {
       margin-bottom: 8px;
       display: flex;
@@ -429,14 +445,14 @@
       background: #d62828;
     }
 
-    /* Cart Modal / Drawer Overlay */
-    .cart-overlay {
+    /* Modal Styling (Cart & Product Details) */
+    .cart-overlay, .modal-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.75);
       backdrop-filter: blur(5px);
       z-index: 2000;
       display: none;
@@ -444,11 +460,11 @@
       align-items: center;
     }
 
-    .cart-overlay.active {
+    .cart-overlay.active, .modal-overlay.active {
       display: flex;
     }
 
-    .cart-modal {
+    .cart-modal, .product-modal {
       background: #141419;
       border: 1px solid #281a1e;
       border-radius: 20px;
@@ -461,10 +477,10 @@
       box-shadow: 0 15px 40px rgba(0,0,0,0.8);
     }
 
-    .close-cart {
+    .close-modal {
       position: absolute;
-      top: 20px;
-      right: 20px;
+      top: 15px;
+      right: 15px;
       background: #2a2a35;
       color: #fff;
       border: none;
@@ -477,10 +493,42 @@
       align-items: center;
       justify-content: center;
       transition: .3s;
+      z-index: 10;
     }
 
-    .close-cart:hover {
+    .close-modal:hover {
       background: #e63946;
+    }
+
+    /* Product Detail Modal Content */
+    .product-modal-img {
+      width: 100%;
+      max-height: 280px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 15px;
+    }
+
+    .product-modal-title {
+      font-size: 22px;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .product-modal-price {
+      font-size: 22px;
+      color: #e63946;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .product-modal-desc {
+      color: #b0b0b8;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      border-top: 1px solid #281a1e;
+      padding-top: 12px;
     }
 
     .cart-items {
@@ -658,8 +706,11 @@
 
 <body>
 
+  <!-- Top Moving Bar -->
   <div class="announcement-bar">
-    🚚 Livraison gratuite à Salé et Rabat 🇲🇦 • Paiement à la livraison
+    <div class="announcement-text">
+      🚚 Livraison gratuite à Salé et Rabat 🇲🇦 • Paiement à la livraison
+    </div>
   </div>
 
   <!-- Header -->
@@ -706,7 +757,6 @@
       <h2>Bienvenue dans l'univers de <span>G-TESTER</span></h2>
       <p>Votre première destination pour les parfums orientaux et internationaux de luxe. Nous vous garantissons une haute qualité, de l'authenticité et une tenue longue durée.</p>
 
-      <!-- الفيديو الترويجي -->
       <div class="promo-video-container" id="promoVideoContainer">
         <video autoplay muted loop playsinline>
           <source src="images/skyreels-27951104-1791757463251.mp4" type="video/mp4">
@@ -714,7 +764,6 @@
         </video>
       </div>
 
-      <!-- البنرات الرئيسية الكبيرة فوق المنتجات لكل قسم -->
       <div class="category-banner-container" id="bannerMen">
         <img src="images/hommmm.jpeg" onerror="this.src='image_2.png'" alt="Parfums Hommes">
       </div>
@@ -731,7 +780,6 @@
         Chez <strong>G-TESTER</strong>, nous croyons qu'un parfum est votre signature personnelle qui reflète votre caractère et laisse une impression indélébile. Nous vous proposons une sélection minutieuse de superbes parfums pour hommes et femmes, ainsi qu'un service de décants originaux pour découvrir les plus grandes maisons mondiales en toute liberté.
       </div>
 
-      <!-- بطاقات المميزات -->
       <div class="features-grid" id="featuresGrid">
         <div class="feature-card">
           <div class="icon">✨</div>
@@ -761,130 +809,129 @@
       
       <div class="products" id="productsContainer">
 
-        <!-- ================= قسم العطور الرجالية ================= -->
-
-        <div class="product" data-category="men" data-name="Musamam Black Intense Lattafa">
+        <!-- Hommes -->
+        <div class="product" data-category="men" data-name="Musamam Black Intense Lattafa" onclick="openProductModal('Musamam Black Intense', '299 DH', 'images/Musamam Black Intense.jpeg', 'Un parfum oriental boisé envoûtant combinant lavande, bergamote et épices avec un fond riche en ambre et bois précieux.')">
           <img src="images/Musamam Black Intense.jpeg" onerror="this.onerror=null; this.src='Musamam Black Intense.jpeg';" alt="Musamam Black Intense">
           <div class="product-info">
             <div>
               <h3>Musamam Black Intense</h3>
-              <p>Lattafa - Un parfum luxueux aux notes d'ambre, de lavande et de citron frais.</p>
+              <p>Lattafa - Ambre, lavande et citron frais.</p>
             </div>
             <div>
               <div class="price">299 DH</div>
-              <button class="add-btn" onclick="addToCart('Musamam Black Intense', 299)">
+              <button class="add-btn" onclick="event.stopPropagation(); addToCart('Musamam Black Intense', 299)">
                 Ajouter au panier
               </button>
             </div>
           </div>
         </div>
 
-        <div class="product" data-category="men" data-name="Asad Elixir Lattafa">
+        <div class="product" data-category="men" data-name="Asad Elixir Lattafa" onclick="openProductModal('Asad Elixir', '199 DH', 'images/Asad Elixir.jpeg', 'Un parfum masculin charismatique aux notes chaudes de poivre noir, tabac et ambre intense.')">
           <img src="images/Asad Elixir.jpeg" onerror="this.onerror=null; this.src='Asad Elixir.jpg';" alt="Asad Elixir">
           <div class="product-info">
             <div>
               <h3>Asad Elixir</h3>
-              <p>Lattafa - Notes d'épices chaleureuses et de bois profonds reflétant le luxe.</p>
+              <p>Lattafa - Épices chaudes et bois profonds.</p>
             </div>
             <div>
               <div class="price">199 DH</div>
-              <button class="add-btn" onclick="addToCart('Asad Elixir', 199)">
+              <button class="add-btn" onclick="event.stopPropagation(); addToCart('Asad Elixir', 199)">
                 Ajouter au panier
               </button>
             </div>
           </div>
         </div>
 
-        <div class="product" data-category="men" data-name="Khamrah Qahwa Lattafa">
+        <div class="product" data-category="men" data-name="Khamrah Qahwa Lattafa" onclick="openProductModal('Khamrah Qahwa', '249 DH', 'images/Khamrah Qahwa.jpeg', 'Un gourmand irrésistible mêlant café torréfié, cannelle, guimauve et vanille onctueuse.')">
           <img src="images/Khamrah Qahwa.jpeg" onerror="this.onerror=null; this.src='Khamrah Qahwa.jpg';" alt="Khamrah Qahwa">
           <div class="product-info">
             <div>
               <h3>Khamrah Qahwa</h3>
-              <p>Lattafa - Touches de café chaud, de cannelle et de guimauve.</p>
+              <p>Lattafa - Café chaud, cannelle et guimauve.</p>
             </div>
             <div>
               <div class="price">249 DH</div>
-              <button class="add-btn" onclick="addToCart('Khamrah Qahwa', 249)">
+              <button class="add-btn" onclick="event.stopPropagation(); addToCart('Khamrah Qahwa', 249)">
                 Ajouter au panier
               </button>
             </div>
           </div>
         </div>
 
-        <div class="product" data-category="men" data-name="Khamrah Classic Lattafa">
+        <div class="product" data-category="men" data-name="Khamrah Classic Lattafa" onclick="openProductModal('Khamrah Classic', '249 DH', 'images/Khamrah Classic.jpeg', 'Un chef-dœuvre oriental aux dattes succulentes, praliné et bois de santal.')">
           <img src="images/Khamrah Classic.jpeg" onerror="this.onerror=null; this.src='Khamrah Classic.jpeg';" alt="Khamrah Classic">
           <div class="product-info">
             <div>
               <h3>Khamrah Classic</h3>
-              <p>Lattafa - Mélange oriental riche aux notes de datte, vanille et cannelle.</p>
+              <p>Lattafa - Datte, vanille et cannelle.</p>
             </div>
             <div>
               <div class="price">249 DH</div>
-              <button class="add-btn" onclick="addToCart('Khamrah Classic', 249)">
+              <button class="add-btn" onclick="event.stopPropagation(); addToCart('Khamrah Classic', 249)">
                 Ajouter au panier
               </button>
             </div>
           </div>
         </div>
 
-        <div class="product" data-category="men" data-name="Urban Man Paradise">
+        <div class="product" data-category="men" data-name="Urban Man Paradise" onclick="openProductModal('Urban Man Paradise', '199 DH', 'images/Urban Man Paradise.jpeg', 'Un parfum estival captivant aux facettes de noix de coco, figue verte et menthe fraîche.')">
           <img src="images/Urban Man Paradise.jpeg" onerror="this.onerror=null; this.src='Urban Man Paradise.jpg';" alt="Urban Man Paradise">
           <div class="product-info">
             <div>
               <h3>Urban Man Paradise</h3>
-              <p>Un parfum tropical rafraîchissant à la noix de coco, figue et menthe.</p>
+              <p>Noix de coco, figue et menthe fraîche.</p>
             </div>
             <div>
               <div class="price">199 DH</div>
-              <button class="add-btn" onclick="addToCart('Urban Man Paradise', 199)">
+              <button class="add-btn" onclick="event.stopPropagation(); addToCart('Urban Man Paradise', 199)">
                 Ajouter au panier
               </button>
             </div>
           </div>
         </div>
 
-        <div class="product" data-category="men" data-name="Maison Asrar Cascade">
+        <div class="product" data-category="men" data-name="Maison Asrar Cascade" onclick="openProductModal('Maison Asrar - Cascade', '350 DH', 'images/Maison Asrar - Cascade.jpeg', 'Une brise marine dynamique rafraîchie par des agrumes et un fond boisé propre.')">
           <img src="images/Maison Asrar - Cascade.jpeg" onerror="this.onerror=null; this.src='Maison Asrar - Cascade.jpg';" alt="Cascade Maison Asrar">
           <div class="product-info">
             <div>
               <h3>Maison Asrar - Cascade</h3>
-              <p>Un sillage aquatique rafraîchissant procurant fraîcheur et distinction.</p>
+              <p>Sillage aquatique marin rafraîchissant.</p>
             </div>
             <div>
               <div class="price">350 DH</div>
-              <button class="add-btn" onclick="addToCart('Maison Asrar - Cascade', 350)">
+              <button class="add-btn" onclick="event.stopPropagation(); addToCart('Maison Asrar - Cascade', 350)">
                 Ajouter au panier
               </button>
             </div>
           </div>
         </div>
 
-        <div class="product" data-category="men" data-name="Maison Asrar Wadi">
+        <div class="product" data-category="men" data-name="Maison Asrar Wadi" onclick="openProductModal('Maison Asrar - Wadi', '350 DH', 'images/Maison Asrar - Wadi.jpeg', 'Inspiré par la nature, alliance harmonieuse d accords verts, d herbes aromatiques et d agrumes.')">
           <img src="images/Maison Asrar - Wadi.jpeg" onerror="this.onerror=null; this.src='Maison Asrar - Wadi.jpg';" alt="Wadi Maison Asrar">
           <div class="product-info">
             <div>
               <h3>Maison Asrar - Wadi</h3>
-              <p>Arôme aquatique et vert herbacé donnant une sensation de pureté.</p>
+              <p>Note aquatique et verte herbacée.</p>
             </div>
             <div>
               <div class="price">350 DH</div>
-              <button class="add-btn" onclick="addToCart('Maison Asrar - Wadi', 350)">
+              <button class="add-btn" onclick="event.stopPropagation(); addToCart('Maison Asrar - Wadi', 350)">
                 Ajouter au panier
               </button>
             </div>
           </div>
         </div>
 
-        <div class="product" data-category="men" data-name="Maison Asrar Tornado">
+        <div class="product" data-category="men" data-name="Maison Asrar Tornado" onclick="openProductModal('Maison Asrar - Tornado', '350 DH', 'images/Maison Asrar - Tornado.jpeg', 'Une explosion de fruits sombres et d épices nobles sur un lit de cèdre et d ambre.')">
           <img src="images/Maison Asrar - Tornado.jpeg" onerror="this.onerror=null; this.src='Maison Asrar - Tornado.jpg';" alt="Tornado Maison Asrar">
           <div class="product-info">
             <div>
               <h3>Maison Asrar - Tornado</h3>
-              <p>Parfum oriental chaleureux aux notes de fruits noirs et bois élégants.</p>
+              <p>Fruits noirs et bois élégants.</p>
             </div>
             <div>
               <div class="price">350 DH</div>
-              <button class="add-btn" onclick="addToCart('Maison Asrar - Tornado', 350)">
+              <button class="add-btn" onclick="event.stopPropagation(); addToCart('Maison Asrar - Tornado', 350)">
                 Ajouter au panier
               </button>
             </div>
@@ -892,16 +939,16 @@
         </div>
 
 
-        <!-- ================= قسم التقسيمات ================= -->
+        <!-- Décants -->
         
-        <div class="product" data-category="decants" data-name="Valentino Born in Roma Coral Fantasy">
+        <div class="product" data-category="decants" data-name="Valentino Born in Roma Coral Fantasy" onclick="openProductModal('Valentino - Coral Fantasy', '150 DH', 'images/Valentino - uomo born in roma Intense.jpeg', 'Décant officiel. Un mélange vibrant de pomme rouge, sauge et tabac intense.')">
           <img src="images/Valentino - uomo born in roma Intense.jpeg" onerror="this.onerror=null; this.src='images/valentino.jpg';" alt="Valentino Coral Fantasy">
           <div class="product-info">
             <div>
               <h3>Valentino - Coral Fantasy</h3>
-              <p>Notes de pomme rouge, épices et tabac rafraîchissant.</p>
+              <p>Pomme rouge, épices et tabac.</p>
               
-              <div class="volume-selector">
+              <div class="volume-selector" onclick="event.stopPropagation();">
                 <label>Format:</label>
                 <select class="volume-select" id="vol-valentino" onchange="updatePrice(this, 'price-valentino', 80, 150)">
                   <option value="5ml">5ml (80 DH)</option>
@@ -911,21 +958,21 @@
             </div>
             <div>
               <div class="price" id="price-valentino">150 DH</div>
-              <button class="add-btn" onclick="addDecantToCart('Valentino - Coral Fantasy', 'vol-valentino', 'price-valentino')">
+              <button class="add-btn" onclick="event.stopPropagation(); addDecantToCart('Valentino - Coral Fantasy', 'vol-valentino', 'price-valentino')">
                 Ajouter au panier
               </button>
             </div>
           </div>
         </div>
 
-        <div class="product" data-category="decants" data-name="Stronger With You Intensely">
+        <div class="product" data-category="decants" data-name="Stronger With You Intensely" onclick="openProductModal('Stronger With You Intensely', '160 DH', 'images/stronger with you intensly (10ml).jpeg', 'Décant officiel. Une addiction chaleureuse de baies rose, vanille et châtaigne grillée.')">
           <img src="images/stronger with you intensly (10ml).jpeg" onerror="this.onerror=null; this.src='images/armani_intensely.jpg';" alt="Stronger With You Intensely">
           <div class="product-info">
             <div>
               <h3>Stronger With You Intensely</h3>
-              <p>Mélange chaleureux de vanille, d'ambre et d'épices luxueuses.</p>
+              <p>Vanille, ambre et épices.</p>
               
-              <div class="volume-selector">
+              <div class="volume-selector" onclick="event.stopPropagation();">
                 <label>Format:</label>
                 <select class="volume-select" id="vol-intensely" onchange="updatePrice(this, 'price-intensely', 85, 160)">
                   <option value="5ml">5ml (85 DH)</option>
@@ -935,21 +982,21 @@
             </div>
             <div>
               <div class="price" id="price-intensely">160 DH</div>
-              <button class="add-btn" onclick="addDecantToCart('Stronger With You Intensely', 'vol-intensely', 'price-intensely')">
+              <button class="add-btn" onclick="event.stopPropagation(); addDecantToCart('Stronger With You Intensely', 'vol-intensely', 'price-intensely')">
                 Ajouter au panier
               </button>
             </div>
           </div>
         </div>
 
-        <div class="product" data-category="decants" data-name="Le Male Elixir Jean Paul Gaultier">
+        <div class="product" data-category="decants" data-name="Le Male Elixir Jean Paul Gaultier" onclick="openProductModal('Le Male Elixir', '180 DH', 'images/le male elixir (10ml).jpeg', 'Décant officiel. Un élixir ambré passionné révélant la menthe, le miel et la fève tonka.')">
           <img src="images/le male elixir (10ml).jpeg" onerror="this.onerror=null; this.src='images/le_male_elixir.jpg';" alt="Le Male Elixir">
           <div class="product-info">
             <div>
               <h3>Le Male Elixir</h3>
-              <p>Jean Paul Gaultier - Miel, vanille et ambre audacieux.</p>
+              <p>JPG - Miel, vanille et ambre.</p>
               
-              <div class="volume-selector">
+              <div class="volume-selector" onclick="event.stopPropagation();">
                 <label>Format:</label>
                 <select class="volume-select" id="vol-elixir" onchange="updatePrice(this, 'price-elixir', 95, 180)">
                   <option value="5ml">5ml (95 DH)</option>
@@ -959,21 +1006,21 @@
             </div>
             <div>
               <div class="price" id="price-elixir">180 DH</div>
-              <button class="add-btn" onclick="addDecantToCart('Le Male Elixir', 'vol-elixir', 'price-elixir')">
+              <button class="add-btn" onclick="event.stopPropagation(); addDecantToCart('Le Male Elixir', 'vol-elixir', 'price-elixir')">
                 Ajouter au panier
               </button>
             </div>
           </div>
         </div>
 
-        <div class="product" data-category="decants" data-name="Dior Homme Intense">
+        <div class="product" data-category="decants" data-name="Dior Homme Intense" onclick="openProductModal('Dior Homme Intense', '190 DH', 'images/dior homme intense (10ml).jpeg', 'Décant officiel. L incarnation du chic masculin avec iris noble, ambrette et bois de cèdre.')">
           <img src="images/dior homme intense (10ml).jpeg" onerror="this.onerror=null; this.src='images/dior_homme_intense.jpg';" alt="Dior Homme Intense">
           <div class="product-info">
             <div>
               <h3>Dior Homme Intense</h3>
-              <p>L'élégance de bois luxueux mêlée aux notes envoûtantes d'iris.</p>
+              <p>Iris de Toscane et bois de cèdre.</p>
               
-              <div class="volume-selector">
+              <div class="volume-selector" onclick="event.stopPropagation();">
                 <label>Format:</label>
                 <select class="volume-select" id="vol-dior" onchange="updatePrice(this, 'price-dior', 100, 190)">
                   <option value="5ml">5ml (100 DH)</option>
@@ -983,21 +1030,21 @@
             </div>
             <div>
               <div class="price" id="price-dior">190 DH</div>
-              <button class="add-btn" onclick="addDecantToCart('Dior Homme Intense', 'vol-dior', 'price-dior')">
+              <button class="add-btn" onclick="event.stopPropagation(); addDecantToCart('Dior Homme Intense', 'vol-dior', 'price-dior')">
                 Ajouter au panier
               </button>
             </div>
           </div>
         </div>
 
-        <div class="product" data-category="decants" data-name="Stronger With You Absolutely">
+        <div class="product" data-category="decants" data-name="Stronger With You Absolutely" onclick="openProductModal('Stronger With You Absolutely', '170 DH', 'images/stronger with you absolutly (10ml).jpeg', 'Décant officiel. Notes intenses de rhum ambré, bergamote, lavande et vanille liquoreuse.')">
           <img src="images/stronger with you absolutly (10ml).jpeg" onerror="this.onerror=null; this.src='images/armani_absolutely.jpg';" alt="Stronger With You Absolutely">
           <div class="product-info">
             <div>
               <h3>Stronger With You Absolutely</h3>
-              <p>Rhum, cèdre et vanille - Un sillage audacieux et chaleureux irrésistible.</p>
+              <p>Rhum, cèdre et vanille liquoreuse.</p>
               
-              <div class="volume-selector">
+              <div class="volume-selector" onclick="event.stopPropagation();">
                 <label>Format:</label>
                 <select class="volume-select" id="vol-absolutely" onchange="updatePrice(this, 'price-absolutely', 90, 170)">
                   <option value="5ml">5ml (90 DH)</option>
@@ -1007,21 +1054,21 @@
             </div>
             <div>
               <div class="price" id="price-absolutely">170 DH</div>
-              <button class="add-btn" onclick="addDecantToCart('Stronger With You Absolutely', 'vol-absolutely', 'price-absolutely')">
+              <button class="add-btn" onclick="event.stopPropagation(); addDecantToCart('Stronger With You Absolutely', 'vol-absolutely', 'price-absolutely')">
                 Ajouter au panier
               </button>
             </div>
           </div>
         </div>
 
-        <div class="product" data-category="decants" data-name="Stronger With You Powerfully">
+        <div class="product" data-category="decants" data-name="Stronger With You Powerfully" onclick="openProductModal('Stronger With You Powerfully', '175 DH', 'images/stronger with you powefully (10ml).jpeg', 'Décant officiel. Une interprétation cuirée et affirmée pour une allure élégante.')">
           <img src="images/stronger with you powefully (10ml).jpeg" onerror="this.onerror=null; this.src='images/armani_powerfully.jpg';" alt="Stronger With You Powerfully">
           <div class="product-info">
             <div>
               <h3>Stronger With You Powerfully</h3>
-              <p>Notes cuirées et profondes reflétant force et élégance suprême.</p>
+              <p>Accord cuiré et bois sombres.</p>
               
-              <div class="volume-selector">
+              <div class="volume-selector" onclick="event.stopPropagation();">
                 <label>Format:</label>
                 <select class="volume-select" id="vol-powerfully" onchange="updatePrice(this, 'price-powerfully', 90, 175)">
                   <option value="5ml">5ml (90 DH)</option>
@@ -1031,7 +1078,7 @@
             </div>
             <div>
               <div class="price" id="price-powerfully">175 DH</div>
-              <button class="add-btn" onclick="addDecantToCart('Stronger With You Powerfully', 'vol-powerfully', 'price-powerfully')">
+              <button class="add-btn" onclick="event.stopPropagation(); addDecantToCart('Stronger With You Powerfully', 'vol-powerfully', 'price-powerfully')">
                 Ajouter au panier
               </button>
             </div>
@@ -1039,173 +1086,173 @@
         </div>
 
 
-        <!-- ================= قسم العطور النسائية ================= -->
+        <!-- Femmes -->
 
-        <div class="product" data-category="women" data-name="Yara Candy Lattafa">
+        <div class="product" data-category="women" data-name="Yara Candy Lattafa" onclick="openProductModal('YARA CANDY', '209 DH', 'images/yara candy.jpeg', 'Lattafa - Un parfum gourmand et joyeux éclatant de bonbons fruités et de musc doux.')">
           <div class="badge">+ CADEAU</div>
           <img src="images/yara candy.jpeg" onerror="this.onerror=null; this.src='images/yara candy.jpg';" alt="Yara Candy">
           <div class="product-info">
             <div>
               <h3>YARA CANDY</h3>
-              <p>Lattafa - Parfum féminin enchanteur aux notes de bonbon et fruits frais.</p>
+              <p>Lattafa - Bonbons et fruits frais.</p>
             </div>
             <div>
               <div class="price">
                 209 DH <span class="old-price">249 DH</span>
               </div>
-              <button class="add-btn" onclick="addToCart('YARA CANDY', 209)">
+              <button class="add-btn" onclick="event.stopPropagation(); addToCart('YARA CANDY', 209)">
                 Ajouter au panier
               </button>
             </div>
           </div>
         </div>
 
-        <div class="product" data-category="women" data-name="Yara Tous Lattafa">
+        <div class="product" data-category="women" data-name="Yara Tous Lattafa" onclick="openProductModal('YARA TOUS', '209 DH', 'images/yara tous.jpeg', 'Lattafa - Cocktail tropical de mangue, lait de coco et fleurs blanches exotiques.')">
           <div class="badge">+ CADEAU</div>
           <img src="images/yara tous.jpeg" onerror="this.onerror=null; this.src='images/yara tous.jpg';" alt="Yara Tous">
           <div class="product-info">
             <div>
               <h3>YARA TOUS</h3>
-              <p>Lattafa - Mélange tropical de mangue, noix de coco et fleurs blanches.</p>
+              <p>Lattafa - Mangue, noix de coco et fleurs.</p>
             </div>
             <div>
               <div class="price">
                 209 DH <span class="old-price">249 DH</span>
               </div>
-              <button class="add-btn" onclick="addToCart('YARA TOUS', 209)">
+              <button class="add-btn" onclick="event.stopPropagation(); addToCart('YARA TOUS', 209)">
                 Ajouter au panier
               </button>
             </div>
           </div>
         </div>
 
-        <div class="product" data-category="women" data-name="Urban Women Paradise">
+        <div class="product" data-category="women" data-name="Urban Women Paradise" onclick="openProductModal('URBAN WOMEN', '219 DH', 'images/urban women paradise.jpeg', 'Douceur féminine envoûtante bercée par des fleurs blanches et une vanille réconfortante.')">
           <div class="badge">+ CADEAU</div>
           <img src="images/urban women paradise.jpeg" onerror="this.onerror=null; this.src='images/urban women.jpg';" alt="Urban Women">
           <div class="product-info">
             <div>
               <h3>URBAN WOMEN</h3>
-              <p>Parfum féminin rafraîchissant aux fleurs tropicales et à la vanille.</p>
+              <p>Fleurs tropicales et vanille.</p>
             </div>
             <div>
               <div class="price">
                 219 DH <span class="old-price">259 DH</span>
               </div>
-              <button class="add-btn" onclick="addToCart('URBAN WOMEN', 219)">
+              <button class="add-btn" onclick="event.stopPropagation(); addToCart('URBAN WOMEN', 219)">
                 Ajouter au panier
               </button>
             </div>
           </div>
         </div>
 
-        <div class="product" data-category="women" data-name="Khair Confection Paris Corner">
+        <div class="product" data-category="women" data-name="Khair Confection Paris Corner" onclick="openProductModal('KHAIR CONFECTION', '219 DH', 'images/khair confection.jpeg', 'Paris Corner - Accord gourmand irrésistible de marshmallow moelleux et vanille.')">
           <div class="badge">+ CADEAU</div>
           <img src="images/khair confection.jpeg" onerror="this.onerror=null; this.src='images/khair confection.jpg';" alt="Khair Confection">
           <div class="product-info">
             <div>
               <h3>KHAIR CONFECTION</h3>
-              <p>Paris Corner - Accord oriental raffiné de guimauve et vanille.</p>
+              <p>Paris Corner - Guimauve et vanille.</p>
             </div>
             <div>
               <div class="price">
                 219 DH <span class="old-price">259 DH</span>
               </div>
-              <button class="add-btn" onclick="addToCart('KHAIR CONFECTION', 219)">
+              <button class="add-btn" onclick="event.stopPropagation(); addToCart('KHAIR CONFECTION', 219)">
                 Ajouter au panier
               </button>
             </div>
           </div>
         </div>
 
-        <div class="product" data-category="women" data-name="Khair Fusion Paris Corner">
+        <div class="product" data-category="women" data-name="Khair Fusion Paris Corner" onclick="openProductModal('KHAIR FUSION', '219 DH', 'images/khair fusion.jpeg', 'Paris Corner - Fusion somptueuse de fruits des bois, prune et ambre précieux.')">
           <div class="badge">+ CADEAU</div>
           <img src="images/khair fusion.jpeg" onerror="this.onerror=null; this.src='images/khair fusion.jpg';" alt="Khair Fusion">
           <div class="product-info">
             <div>
               <h3>KHAIR FUSION</h3>
-              <p>Paris Corner - Fruits noirs sombres aux notes somptueuses et durables.</p>
+              <p>Paris Corner - Fruits noirs et ambre.</p>
             </div>
             <div>
               <div class="price">
                 219 DH <span class="old-price">259 DH</span>
               </div>
-              <button class="add-btn" onclick="addToCart('KHAIR FUSION', 219)">
+              <button class="add-btn" onclick="event.stopPropagation(); addToCart('KHAIR FUSION', 219)">
                 Ajouter au panier
               </button>
             </div>
           </div>
         </div>
 
-        <div class="product" data-category="women" data-name="Heibah عطر الهيبة">
+        <div class="product" data-category="women" data-name="Heibah عطر الهيبة" onclick="openProductModal('HEIBAH', '149 DH', 'images/heibah.jpeg', 'Sillage oriental majestueux aux notes nobles de bois précieux et d épices d Orient.')">
           <div class="badge">+ CADEAU</div>
           <img src="images/heibah.jpeg" onerror="this.onerror=null; this.src='images/heibah.jpg';" alt="Heibah">
           <div class="product-info">
             <div>
               <h3>HEIBAH</h3>
-              <p>Parfum Heibah - Une senteur digne de votre prestance aux notes orientales.</p>
+              <p>Notes orientales somptueuses.</p>
             </div>
             <div>
               <div class="price">
                 149 DH <span class="old-price">179 DH</span>
               </div>
-              <button class="add-btn" onclick="addToCart('HEIBAH', 149)">
+              <button class="add-btn" onclick="event.stopPropagation(); addToCart('HEIBAH', 149)">
                 Ajouter au panier
               </button>
             </div>
           </div>
         </div>
 
-        <div class="product" data-category="women" data-name="Marshmallow Blush">
+        <div class="product" data-category="women" data-name="Marshmallow Blush" onclick="openProductModal('MARSHMALLOW BLUSH', '279 DH', 'images/marshmallow blush.jpeg', 'Une caresse parfumée mêlant fraises fraîches, guimauve et chantilly vanillée.')">
           <div class="badge">+ CADEAU</div>
           <img src="images/marshmallow blush.jpeg" onerror="this.onerror=null; this.src='images/marshmallow blush.jpg';" alt="Marshmallow Blush">
           <div class="product-info">
             <div>
               <h3>MARSHMALLOW BLUSH</h3>
-              <p>Sillage féminin chaleureux aux arômes de guimauve et fraise.</p>
+              <p>Guimauve et fraise sucrée.</p>
             </div>
             <div>
               <div class="price">
                 279 DH <span class="old-price">309 DH</span>
               </div>
-              <button class="add-btn" onclick="addToCart('MARSHMALLOW BLUSH', 279)">
+              <button class="add-btn" onclick="event.stopPropagation(); addToCart('MARSHMALLOW BLUSH', 279)">
                 Ajouter au panier
               </button>
             </div>
           </div>
         </div>
 
-        <div class="product" data-category="women" data-name="Elysia Arabe Rouge">
+        <div class="product" data-category="women" data-name="Elysia Arabe Rouge" onclick="openProductModal('ELYSIA-ARABE ROUGE', '179 DH', 'images/elysia arabe rouge.jpeg', 'Sensualité absolue mêlant safran précieux, ambre gris et cèdre majestueux.')">
           <div class="badge">+ CADEAU</div>
           <img src="images/elysia arabe rouge.jpeg" onerror="this.onerror=null; this.src='images/elysia arabe rouge.jpg';" alt="Elysia Arabe Rouge">
           <div class="product-info">
             <div>
               <h3>ELYSIA-ARABE ROUGE</h3>
-              <p>Notes chaleudes de bois et d'ambre pour un look féminin séduisant.</p>
+              <p>Bois chauds et ambre précieux.</p>
             </div>
             <div>
               <div class="price">
                 179 DH <span class="old-price">199 DH</span>
               </div>
-              <button class="add-btn" onclick="addToCart('ELYSIA-ARABE ROUGE', 179)">
+              <button class="add-btn" onclick="event.stopPropagation(); addToCart('ELYSIA-ARABE ROUGE', 179)">
                 Ajouter au panier
               </button>
             </div>
           </div>
         </div>
 
-        <div class="product" data-category="women" data-name="Elysia Marshmallow">
+        <div class="product" data-category="women" data-name="Elysia Marshmallow" onclick="openProductModal('ELYSIA-MARSHMALLOW', '179 DH', 'images/elysia marshmallow.jpeg', 'Douceur délicate et apaisante alliant guimauve fluffy et pétales de roses.')">
           <div class="badge">+ CADEAU</div>
           <img src="images/elysia marshmallow.jpeg" onerror="this.onerror=null; this.src='images/elysia marshmallow.jpg';" alt="Elysia Marshmallow">
           <div class="product-info">
             <div>
               <h3>ELYSIA-MARSHMALLOW</h3>
-              <p>Un parfum apaisant combinant guimauve et délicates fleurs.</p>
+              <p>Guimauve et fleurs délicates.</p>
             </div>
             <div>
               <div class="price">
                 179 DH <span class="old-price">199 DH</span>
               </div>
-              <button class="add-btn" onclick="addToCart('ELYSIA-MARSHMALLOW', 179)">
+              <button class="add-btn" onclick="event.stopPropagation(); addToCart('ELYSIA-MARSHMALLOW', 179)">
                 Ajouter au panier
               </button>
             </div>
@@ -1217,10 +1264,24 @@
 
   </main>
 
+  <!-- Product Details Modal Overlay -->
+  <div class="modal-overlay" id="productModalOverlay">
+    <div class="product-modal">
+      <button class="close-modal" onclick="closeProductModal()">✕</button>
+      <img src="" alt="" class="product-modal-img" id="modalImg">
+      <h2 class="product-modal-title" id="modalTitle"></h2>
+      <div class="product-modal-price" id="modalPrice"></div>
+      <p class="product-modal-desc" id="modalDesc"></p>
+      <button class="add-btn" id="modalAddBtn" style="padding: 14px; font-size: 16px;">
+        Ajouter au panier 🛍️
+      </button>
+    </div>
+  </div>
+
   <!-- Cart Modal Overlay -->
   <div class="cart-overlay" id="cartOverlay">
     <div class="cart-modal">
-      <button class="close-cart" onclick="toggleCartModal(false)">✕</button>
+      <button class="close-modal" onclick="toggleCartModal(false)">✕</button>
       <h2>🛒 Panier d'achats</h2>
 
       <div class="cart-items" id="cartItems">
@@ -1231,7 +1292,6 @@
         Total : <span id="total" style="color: #e63946;">0</span> DH
       </div>
 
-      <!-- Customer Form inside Modal -->
       <section class="order-form">
         <h2>📦 Confirmer la commande (Paiement à la livraison)</h2>
 
@@ -1271,7 +1331,6 @@
 
     updateCart();
 
-    // Volume price update for decants
     function updatePrice(selectElement, priceElementId, price5ml, price10ml) {
       const priceEl = document.getElementById(priceElementId);
       if (selectElement.value === '5ml') {
@@ -1281,7 +1340,6 @@
       }
     }
 
-    // Add Decant with selected volume
     function addDecantToCart(name, selectId, priceId) {
       const selectEl = document.getElementById(selectId);
       const volume = selectEl.value;
@@ -1292,7 +1350,27 @@
       addToCart(fullName, price);
     }
 
-    // Filter Categories with Features Grid control
+    /* Modal Product Details Logic */
+    function openProductModal(title, priceStr, imgSrc, description) {
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalPrice').textContent = priceStr;
+      document.getElementById('modalImg').src = imgSrc;
+      document.getElementById('modalDesc').textContent = description;
+
+      const numericPrice = parseInt(priceStr);
+      const addBtn = document.getElementById('modalAddBtn');
+      addBtn.onclick = function() {
+        addToCart(title, numericPrice);
+        closeProductModal();
+      };
+
+      document.getElementById('productModalOverlay').classList.add('active');
+    }
+
+    function closeProductModal() {
+      document.getElementById('productModalOverlay').classList.remove('active');
+    }
+
     function filterCategory(category, btnElement) {
       const welcomeSection = document.getElementById('welcomeSection');
       const productsWrapper = document.getElementById('productsWrapper');
@@ -1308,7 +1386,6 @@
       buttons.forEach(btn => btn.classList.remove('active'));
       if(btnElement) btnElement.classList.add('active');
 
-      // Reset inner displays
       promoVideo.style.display = 'none';
       bannerMen.classList.remove('active');
       bannerWomen.classList.remove('active');
@@ -1342,7 +1419,6 @@
       }
     }
 
-    // Search Products Function
     function searchProducts() {
       const input = document.getElementById('searchInput').value.toLowerCase();
       const productsWrapper = document.getElementById('productsWrapper');
@@ -1468,7 +1544,6 @@
       totalElement.textContent = total;
     }
 
-    // Toggle Cart Modal Open/Close
     function toggleCartModal(open) {
       const overlay = document.getElementById("cartOverlay");
       if (open) {
