@@ -164,8 +164,8 @@
       line-height: 1.8;
     }
 
-    /* Promo Video Styling */
-    .promo-video-container {
+    /* Promo Video & Custom Banners Styling */
+    .promo-video-container, .category-banner-container {
       margin: 25px auto 30px;
       width: 100%;
       max-width: 650px;
@@ -175,10 +175,21 @@
       box-shadow: 0 10px 30px rgba(230, 57, 70, 0.2);
     }
 
-    .promo-video-container video {
+    .promo-video-container video, .category-banner-container img {
       width: 100%;
       display: block;
       border-radius: 16px;
+      height: auto;
+      max-height: 400px;
+      object-fit: cover;
+    }
+
+    .category-banner-container {
+      display: none;
+    }
+
+    .category-banner-container.active {
+      display: block;
     }
 
     .about-brand {
@@ -225,7 +236,7 @@
       margin-bottom: 0;
     }
 
-    /* Products Container - 2 أعمدة في للهاتف */
+    /* Products Container - 2 أعمدة للهاتف */
     .container {
       width: 95%;
       max-width: 1200px;
@@ -655,7 +666,7 @@
   <header>
     <div class="logo">
       G-TESTER 
-      <img src="images/IMG_6840.JPG.jpeg" alt="G-TESTER Logo" style="width: 80px; height: auto;">
+      <img src="images/IMG_6840.JPG.jpeg" onerror="this.src='IMG_6840.JPG.jpeg'" alt="G-TESTER Logo" style="width: 80px; height: auto;">
     </div>
 
     <button class="cart-btn" onclick="toggleCartModal(true)">
@@ -673,17 +684,17 @@
     <button class="filter-btn active" onclick="filterCategory('welcome', this)">الرئيسية ✨</button>
 
     <button class="filter-btn" onclick="filterCategory('men', this)">
-      <img src="images/hommmm.jpeg" onerror="this.src='image_2.png'" alt="عطور الرجال">
+      <img src="images/image_2.png" onerror="this.src='image_2.png'" alt="عطور الرجال">
       عطور الرجال
     </button>
 
     <button class="filter-btn" onclick="filterCategory('decants', this)">
-      <img src="images/decante.PNG" onerror="this.src='image_3.png'" alt="التقسيمات">
+      <img src="images/image_3.png" onerror="this.src='image_3.png'" alt="التقسيمات">
       التقسيمات
     </button>
 
     <button class="filter-btn" onclick="filterCategory('women', this)">
-      <img src="images/femmmm.PNG" onerror="this.src='image_1.png'" alt="عطور النساء">
+      <img src="images/image_1.png" onerror="this.src='image_1.png'" alt="عطور النساء">
       عطور النساء
     </button>
   </div>
@@ -701,6 +712,19 @@
           <source src="images/skyreels-27951104-1791757463251.mp4" type="video/mp4">
           متصفحك لا يدعم تشغيل الفيديو.
         </video>
+      </div>
+
+      <!-- البنرات الرئيسية الكبيرة فوق المنتجات لكل قسم -->
+      <div class="category-banner-container" id="bannerMen">
+        <img src="images/hommmm.jpeg" onerror="this.src='image_2.png'" alt="عطور الرجال">
+      </div>
+
+      <div class="category-banner-container" id="bannerWomen">
+        <img src="images/femmmm.PNG" onerror="this.src='image_1.png'" alt="عطور النساء">
+      </div>
+
+      <div class="category-banner-container" id="bannerDecants">
+        <img src="images/decante.PNG" onerror="this.src='image_3.png'" alt="التقسيمات">
       </div>
 
       <div class="about-brand">
@@ -1267,23 +1291,42 @@
       addToCart(fullName, price);
     }
 
-    // Filter Categories
+    // Filter Categories with Banners Enabled
     function filterCategory(category, btnElement) {
       const welcomeSection = document.getElementById('welcomeSection');
       const productsWrapper = document.getElementById('productsWrapper');
       const products = document.querySelectorAll('.product');
       const buttons = document.querySelectorAll('.filter-btn');
 
+      const promoVideo = document.getElementById('promoVideoContainer');
+      const bannerMen = document.getElementById('bannerMen');
+      const bannerWomen = document.getElementById('bannerWomen');
+      const bannerDecants = document.getElementById('bannerDecants');
+
       buttons.forEach(btn => btn.classList.remove('active'));
       if(btnElement) btnElement.classList.add('active');
+
+      // Reset inner displays
+      promoVideo.style.display = 'none';
+      bannerMen.classList.remove('active');
+      bannerWomen.classList.remove('active');
+      bannerDecants.classList.remove('active');
 
       if (category === 'welcome') {
         welcomeSection.style.display = 'block';
         productsWrapper.classList.add('hide');
+        promoVideo.style.display = 'block';
       } else {
-        // Hide welcome banner section when selecting a category to directly show products
-        welcomeSection.style.display = 'none';
+        welcomeSection.style.display = 'block';
         productsWrapper.classList.remove('hide');
+
+        if (category === 'men') {
+          bannerMen.classList.add('active');
+        } else if (category === 'women') {
+          bannerWomen.classList.add('active');
+        } else if (category === 'decants') {
+          bannerDecants.classList.add('active');
+        }
 
         products.forEach(product => {
           if (product.getAttribute('data-category') === category) {
@@ -1302,6 +1345,10 @@
       const welcomeSection = document.getElementById('welcomeSection');
       const products = document.querySelectorAll('.product');
       const buttons = document.querySelectorAll('.filter-btn');
+      const promoVideo = document.getElementById('promoVideoContainer');
+      const bannerMen = document.getElementById('bannerMen');
+      const bannerWomen = document.getElementById('bannerWomen');
+      const bannerDecants = document.getElementById('bannerDecants');
 
       if (input.trim() !== "") {
         welcomeSection.style.display = 'none';
@@ -1319,6 +1366,10 @@
       } else {
         welcomeSection.style.display = 'block';
         productsWrapper.classList.add('hide');
+        promoVideo.style.display = 'block';
+        bannerMen.classList.remove('active');
+        bannerWomen.classList.remove('active');
+        bannerDecants.classList.remove('active');
         buttons[0].classList.add('active');
       }
     }
