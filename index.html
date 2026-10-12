@@ -731,7 +731,8 @@
         نحن في <strong>G-TESTER</strong> نؤمن بأن العطر هو بصمتك الخاصة التي تعكس شخصيتك وتترك انطباعاً لا يُمحى. نوفر لك تشكيلة مختارة بعناية فائقة من أروع العطور الرجالية والنسائية، بالإضافة إلى خدمة التقسيمات (Decants) الأصلية لتكتشف وتجربة أرقى الدور العالمية والعربية بكل أريحية.
       </div>
 
-      <div class="features-grid">
+      <!-- بطاقات المميزات (ستظهر فقط في الصفحة الرئيسية) -->
+      <div class="features-grid" id="featuresGrid">
         <div class="feature-card">
           <div class="icon">✨</div>
           <h4>أصالة وثبات</h4>
@@ -1291,7 +1292,7 @@
       addToCart(fullName, price);
     }
 
-    // Filter Categories with Banners Enabled
+    // Filter Categories with Features Grid control
     function filterCategory(category, btnElement) {
       const welcomeSection = document.getElementById('welcomeSection');
       const productsWrapper = document.getElementById('productsWrapper');
@@ -1302,6 +1303,7 @@
       const bannerMen = document.getElementById('bannerMen');
       const bannerWomen = document.getElementById('bannerWomen');
       const bannerDecants = document.getElementById('bannerDecants');
+      const featuresGrid = document.getElementById('featuresGrid');
 
       buttons.forEach(btn => btn.classList.remove('active'));
       if(btnElement) btnElement.classList.add('active');
@@ -1316,9 +1318,11 @@
         welcomeSection.style.display = 'block';
         productsWrapper.classList.add('hide');
         promoVideo.style.display = 'block';
+        featuresGrid.style.display = 'grid'; // إظهار بطاقات المميزات في الرئيسية
       } else {
         welcomeSection.style.display = 'block';
         productsWrapper.classList.remove('hide');
+        featuresGrid.style.display = 'none'; // إخفاء بطاقات المميزات في باقي الصفحات
 
         if (category === 'men') {
           bannerMen.classList.add('active');
@@ -1349,6 +1353,7 @@
       const bannerMen = document.getElementById('bannerMen');
       const bannerWomen = document.getElementById('bannerWomen');
       const bannerDecants = document.getElementById('bannerDecants');
+      const featuresGrid = document.getElementById('featuresGrid');
 
       if (input.trim() !== "") {
         welcomeSection.style.display = 'none';
@@ -1367,6 +1372,7 @@
         welcomeSection.style.display = 'block';
         productsWrapper.classList.add('hide');
         promoVideo.style.display = 'block';
+        featuresGrid.style.display = 'grid';
         bannerMen.classList.remove('active');
         bannerWomen.classList.remove('active');
         bannerDecants.classList.remove('active');
