@@ -153,8 +153,8 @@
       line-height: 1.8;
     }
 
-    /* Promo Video Styling */
-    .promo-video-container {
+    /* Promo Video & Custom Category Banners Styling */
+    .promo-video-container, .category-banner-container {
       margin: 25px auto 30px;
       width: 100%;
       max-width: 650px;
@@ -164,10 +164,21 @@
       box-shadow: 0 10px 30px rgba(230, 57, 70, 0.2);
     }
 
-    .promo-video-container video {
+    .promo-video-container video, .category-banner-container img {
       width: 100%;
       display: block;
       border-radius: 16px;
+      height: auto;
+      max-height: 400px;
+      object-fit: cover;
+    }
+
+    .category-banner-container {
+      display: none;
+    }
+
+    .category-banner-container.active {
+      display: block;
     }
 
     .about-brand {
@@ -624,11 +635,26 @@
       <p>وجهتكم الأولى لأفخم العطور الشرقية والعالمية المستوردة. نضمن لكم الجودة العالية، الأصالة، وثبات الروائح الذي يدوم طويلاً.</p>
 
       <!-- فيديو الترويج الاحترافي -->
-      <div class="promo-video-container">
+      <div class="promo-video-container" id="promoVideoContainer">
         <video autoplay muted loop playsinline>
           <source src="images/skyreels-27951104-1791757463251.mp4" type="video/mp4">
           متصفحك لا يدعم تشغيل الفيديو.
         </video>
+      </div>
+
+      <!-- صورة عطور الرجال -->
+      <div class="category-banner-container" id="bannerMen">
+        <img src="images/hommmm.jpeg" alt="عطور الرجال">
+      </div>
+
+      <!-- صورة عطور النساء -->
+      <div class="category-banner-container" id="bannerWomen">
+        <img src="images/femmmm.PNG" alt="عطور النساء">
+      </div>
+
+      <!-- صورة التقسيمات -->
+      <div class="category-banner-container" id="bannerDecants">
+        <img src="images/decante.PNG" alt="التقسيمات Decants">
       </div>
 
       <div class="about-brand">
@@ -1195,22 +1221,42 @@
       addToCart(fullName, price);
     }
 
-    // Filter Categories
+    // Filter Categories with banner toggling
     function filterCategory(category, btnElement) {
       const welcomeSection = document.getElementById('welcomeSection');
       const productsWrapper = document.getElementById('productsWrapper');
       const products = document.querySelectorAll('.product');
       const buttons = document.querySelectorAll('.filter-btn');
 
+      const promoVideo = document.getElementById('promoVideoContainer');
+      const bannerMen = document.getElementById('bannerMen');
+      const bannerWomen = document.getElementById('bannerWomen');
+      const bannerDecants = document.getElementById('bannerDecants');
+
       buttons.forEach(btn => btn.classList.remove('active'));
       if(btnElement) btnElement.classList.add('active');
+
+      // Reset banners visibility inside welcome section
+      promoVideo.style.display = 'none';
+      bannerMen.classList.remove('active');
+      bannerWomen.classList.remove('active');
+      bannerDecants.classList.remove('active');
 
       if (category === 'welcome') {
         welcomeSection.style.display = 'block';
         productsWrapper.classList.add('hide');
+        promoVideo.style.display = 'block';
       } else {
-        welcomeSection.style.display = 'none';
+        welcomeSection.style.display = 'block';
         productsWrapper.classList.remove('hide');
+
+        if (category === 'men') {
+          bannerMen.classList.add('active');
+        } else if (category === 'women') {
+          bannerWomen.classList.add('active');
+        } else if (category === 'decants') {
+          bannerDecants.classList.add('active');
+        }
 
         products.forEach(product => {
           if (product.getAttribute('data-category') === category) {
@@ -1229,6 +1275,10 @@
       const welcomeSection = document.getElementById('welcomeSection');
       const products = document.querySelectorAll('.product');
       const buttons = document.querySelectorAll('.filter-btn');
+      const promoVideo = document.getElementById('promoVideoContainer');
+      const bannerMen = document.getElementById('bannerMen');
+      const bannerWomen = document.getElementById('bannerWomen');
+      const bannerDecants = document.getElementById('bannerDecants');
 
       if (input.trim() !== "") {
         welcomeSection.style.display = 'none';
@@ -1247,6 +1297,10 @@
         // If search is empty, return to welcome view
         welcomeSection.style.display = 'block';
         productsWrapper.classList.add('hide');
+        promoVideo.style.display = 'block';
+        bannerMen.classList.remove('active');
+        bannerWomen.classList.remove('active');
+        bannerDecants.classList.remove('active');
         buttons[0].classList.add('active');
       }
     }
