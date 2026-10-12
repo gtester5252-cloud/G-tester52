@@ -811,8 +811,8 @@
       
       <div class="products" id="productsContainer">
 
-        <!-- Hommes -->
-        <div class="product" data-category="men" data-name="Asad Bourbon Lattafa" onclick="openProductModal('Asad Bourbon', '199 DH', 'image_5.png', 'Lattafa - Un parfum chaleureux et boisé mêlant notes de bourbon, ambre riche, cannelle et épices orientales.')">
+        <!-- ================= HOMMES (Flacons Entiers) ================= -->
+        <div class="product" data-category="men" data-name="Asad Bourbon Lattafa" onclick="openProductModal('Asad Bourbon', '199 DH', 'images/asad bourbon.jpeg', 'Lattafa - Un parfum chaleureux et boisé mêlant notes de bourbon, ambre riche, cannelle et épices orientales.')">
           <img src="images/asad bourbon.jpeg" onerror="this.onerror=null; this.src='image_5.png';" alt="Asad Bourbon">
           <div class="product-info">
             <div>
@@ -828,7 +828,7 @@
           </div>
         </div>
 
-        <div class="product" data-category="men" data-name="Asad Black Lattafa" onclick="openProductModal('Asad Black', '199 DH', 'image_6.png', 'Lattafa - Parfum masculin charismatique aux accords intenses de poivre noir, vanille, ambre et bois précieux.')">
+        <div class="product" data-category="men" data-name="Asad Black Lattafa" onclick="openProductModal('Asad Black', '199 DH', 'images/asad classique.jpeg', 'Lattafa - Parfum masculin charismatique aux accords intenses de poivre noir, vanille, ambre et bois précieux.')">
           <img src="images/asad classique.jpeg" onerror="this.onerror=null; this.src='image_6.png';" alt="Asad Black">
           <div class="product-info">
             <div>
@@ -973,9 +973,10 @@
         </div>
 
 
-        <!-- Décants -->
+        <!-- ================= DECANTS (Format 5ml / 10ml) ================= -->
         
-        <div class="product" data-category="decants" data-name="Le Beau Le Parfum Jean Paul Gaultier" onclick="openProductModal('Le Beau Le Parfum - JPG', '180 DH', 'image_4.png', 'Décant officiel. Une fragrance boisée ambrée irrésistible mêlant noix de coco, bois de santal et fève tonka.')">
+        <!-- Décants Célèbres Internationaux -->
+        <div class="product" data-category="decants" data-name="Le Beau Le Parfum Jean Paul Gaultier" onclick="openProductModal('Le Beau Le Parfum - JPG', '180 DH', 'images/le beau le parfum.jpeg', 'Décant officiel. Une fragrance boisée ambrée irrésistible mêlant noix de coco, bois de santal et fève tonka.')">
           <img src="images/le beau le parfum.jpeg" onerror="this.onerror=null; this.src='image_4.png';" alt="Le Beau Le Parfum">
           <div class="product-info">
             <div>
@@ -1143,8 +1144,129 @@
           </div>
         </div>
 
+        <!-- عطور الرجال في قسم Décants مع تقسيم 5ml / 10ml -->
+        <div class="product" data-category="decants" data-name="Asad Bourbon Decant" onclick="openProductModal('Asad Bourbon (Décant)', '70 DH', 'images/asad bourbon.jpeg', 'Décant Lattafa Asad Bourbon - Notes chaleureuses de bourbon, ambre et épices.')">
+          <img src="images/asad bourbon.jpeg" onerror="this.onerror=null; this.src='image_5.png';" alt="Asad Bourbon Decant">
+          <div class="product-info">
+            <div>
+              <h3>Asad Bourbon</h3>
+              <p>Décant Lattafa - Bourbon & épices.</p>
+              
+              <div class="volume-selector" onclick="event.stopPropagation();">
+                <label>Format:</label>
+                <select class="volume-select" id="vol-asadbourbon" onchange="updatePrice(this, 'price-asadbourbon', 40, 70)">
+                  <option value="5ml">5ml (40 DH)</option>
+                  <option value="10ml" selected>10ml (70 DH)</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <div class="price" id="price-asadbourbon">70 DH</div>
+              <button class="add-btn" onclick="event.stopPropagation(); addDecantToCart('Asad Bourbon', 'vol-asadbourbon', 'price-asadbourbon')">
+                Ajouter au panier
+              </button>
+            </div>
+          </div>
+        </div>
 
-        <!-- Femmes -->
+        <div class="product" data-category="decants" data-name="Asad Black Decant" onclick="openProductModal('Asad Black (Décant)', '70 DH', 'images/asad classique.jpeg', 'Décant Lattafa Asad Black - Accord intense de poivre noir, vanille et ambre.')">
+          <img src="images/asad classique.jpeg" onerror="this.onerror=null; this.src='image_6.png';" alt="Asad Black Decant">
+          <div class="product-info">
+            <div>
+              <h3>Asad Black</h3>
+              <p>Décant Lattafa - Poivre, vanille & ambre.</p>
+              
+              <div class="volume-selector" onclick="event.stopPropagation();">
+                <label>Format:</label>
+                <select class="volume-select" id="vol-asadblack" onchange="updatePrice(this, 'price-asadblack', 40, 70)">
+                  <option value="5ml">5ml (40 DH)</option>
+                  <option value="10ml" selected>10ml (70 DH)</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <div class="price" id="price-asadblack">70 DH</div>
+              <button class="add-btn" onclick="event.stopPropagation(); addDecantToCart('Asad Black', 'vol-asadblack', 'price-asadblack')">
+                Ajouter au panier
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product" data-category="decants" data-name="Musamam Black Intense Decant" onclick="openProductModal('Musamam Black Intense (Décant)', '85 DH', 'images/Musamam Black Intense.jpeg', 'Décant Lattafa Musamam Black Intense - Lavande, bergamote et bois précieux.')">
+          <img src="images/Musamam Black Intense.jpeg" onerror="this.onerror=null; this.src='Musamam Black Intense.jpeg';" alt="Musamam Black Intense Decant">
+          <div class="product-info">
+            <div>
+              <h3>Musamam Black Intense</h3>
+              <p>Décant Lattafa - Ambre & lavande.</p>
+              
+              <div class="volume-selector" onclick="event.stopPropagation();">
+                <label>Format:</label>
+                <select class="volume-select" id="vol-musamam" onchange="updatePrice(this, 'price-musamam', 50, 85)">
+                  <option value="5ml">5ml (50 DH)</option>
+                  <option value="10ml" selected>10ml (85 DH)</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <div class="price" id="price-musamam">85 DH</div>
+              <button class="add-btn" onclick="event.stopPropagation(); addDecantToCart('Musamam Black Intense', 'vol-musamam', 'price-musamam')">
+                Ajouter au panier
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product" data-category="decants" data-name="Khamrah Qahwa Decant" onclick="openProductModal('Khamrah Qahwa (Décant)', '80 DH', 'images/Khamrah Qahwa.jpeg', 'Décant Lattafa Khamrah Qahwa - Café chaud, cannelle et vanille.')">
+          <img src="images/Khamrah Qahwa.jpeg" onerror="this.onerror=null; this.src='Khamrah Qahwa.jpg';" alt="Khamrah Qahwa Decant">
+          <div class="product-info">
+            <div>
+              <h3>Khamrah Qahwa</h3>
+              <p>Décant Lattafa - Café, cannelle & guimauve.</p>
+              
+              <div class="volume-selector" onclick="event.stopPropagation();">
+                <label>Format:</label>
+                <select class="volume-select" id="vol-khamrahqahwa" onchange="updatePrice(this, 'price-khamrahqahwa', 45, 80)">
+                  <option value="5ml">5ml (45 DH)</option>
+                  <option value="10ml" selected>10ml (80 DH)</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <div class="price" id="price-khamrahqahwa">80 DH</div>
+              <button class="add-btn" onclick="event.stopPropagation(); addDecantToCart('Khamrah Qahwa', 'vol-khamrahqahwa', 'price-khamrahqahwa')">
+                Ajouter au panier
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product" data-category="decants" data-name="Khamrah Classic Decant" onclick="openProductModal('Khamrah Classic (Décant)', '80 DH', 'images/Khamrah Classic.jpeg', 'Décant Lattafa Khamrah Classic - Dattes, praliné et bois de santal.')">
+          <img src="images/Khamrah Classic.jpeg" onerror="this.onerror=null; this.src='Khamrah Classic.jpeg';" alt="Khamrah Classic Decant">
+          <div class="product-info">
+            <div>
+              <h3>Khamrah Classic</h3>
+              <p>Décant Lattafa - Datte, vanille & cannelle.</p>
+              
+              <div class="volume-selector" onclick="event.stopPropagation();">
+                <label>Format:</label>
+                <select class="volume-select" id="vol-khamrahclassic" onchange="updatePrice(this, 'price-khamrahclassic', 45, 80)">
+                  <option value="5ml">5ml (45 DH)</option>
+                  <option value="10ml" selected>10ml (80 DH)</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <div class="price" id="price-khamrahclassic">80 DH</div>
+              <button class="add-btn" onclick="event.stopPropagation(); addDecantToCart('Khamrah Classic', 'vol-khamrahclassic', 'price-khamrahclassic')">
+                Ajouter au panier
+              </button>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- ================= FEMMES ================= -->
 
         <div class="product" data-category="women" data-name="Yara Candy Lattafa" onclick="openProductModal('YARA CANDY', '209 DH', 'images/yara candy.jpeg', 'Lattafa - Un parfum gourmand et joyeux éclatant de bonbons fruités et de musc doux.')">
           <div class="badge">+ CADEAU</div>
