@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="fr" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>G-TESTER | Fragrance Collection</title>
+  <title>G-TESTER | Collection de Parfums</title>
 
   <style>
     * {
@@ -236,7 +236,7 @@
       margin-bottom: 0;
     }
 
-    /* Products Container - 2 أعمدة للهاتف */
+    /* Products Container */
     .container {
       width: 95%;
       max-width: 1200px;
@@ -400,7 +400,7 @@
       color: #71717a;
       text-decoration: line-through;
       font-size: 12px;
-      margin-right: 4px;
+      margin-left: 6px;
       font-weight: normal;
     }
 
@@ -464,7 +464,7 @@
     .close-cart {
       position: absolute;
       top: 20px;
-      left: 20px;
+      right: 20px;
       background: #2a2a35;
       color: #fff;
       border: none;
@@ -590,7 +590,7 @@
     .whatsapp-float {
       position: fixed;
       bottom: 25px;
-      left: 25px;
+      right: 25px;
       background-color: #25d366;
       color: #fff;
       width: 55px;
@@ -659,43 +659,43 @@
 <body>
 
   <div class="announcement-bar">
-    🚚 التوصيل مجاني لسلا و الرباط 🇲🇦 • الدفع عند الاستلام
+    🚚 Livraison gratuite à Salé et Rabat 🇲🇦 • Paiement à la livraison
   </div>
 
   <!-- Header -->
   <header>
     <div class="logo">
       G-TESTER 
-      <img src="images/IMG_6840.JPG.jpeg" onerror="this.src='IMG_6840.JPG.jpeg'" alt="G-TESTER Logo" style="width: 80px; height: auto;">
+      <img src="images/IMG_6840.JPG.jpeg" onerror="this.src='IMG_6840.JPG.jpeg'" alt="Logo G-TESTER" style="width: 80px; height: auto;">
     </div>
 
     <button class="cart-btn" onclick="toggleCartModal(true)">
-      🛒 السلة (<span id="cartCount">0</span>)
+      🛒 Panier (<span id="cartCount">0</span>)
     </button>
   </header>
 
   <!-- Search Bar -->
   <div class="search-container">
-    <input type="text" id="searchInput" class="search-input" placeholder="🔍 ابحث عن العطر الذي تفضله..." onkeyup="searchProducts()">
+    <input type="text" id="searchInput" class="search-input" placeholder="🔍 Recherchez votre parfum préféré..." onkeyup="searchProducts()">
   </div>
 
   <!-- Category Nav -->
   <div class="category-nav">
-    <button class="filter-btn active" onclick="filterCategory('welcome', this)">الرئيسية ✨</button>
+    <button class="filter-btn active" onclick="filterCategory('welcome', this)">Accueil ✨</button>
 
     <button class="filter-btn" onclick="filterCategory('men', this)">
-      <img src="images/hommmm.jpeg" onerror="this.src='image_2.png'" alt="عطور الرجال">
-      عطور الرجال
+      <img src="images/image_2.png" onerror="this.src='image_2.png'" alt="Parfums Hommes">
+      Hommes ♂️
     </button>
 
     <button class="filter-btn" onclick="filterCategory('decants', this)">
-      <img src="images/decante.PNG" onerror="this.src='image_3.png'" alt="التقسيمات">
-      التقسيمات
+      <img src="images/image_3.png" onerror="this.src='image_3.png'" alt="Décants">
+      Décants 🌟
     </button>
 
     <button class="filter-btn" onclick="filterCategory('women', this)">
-      <img src="images/femmmm.PNG" onerror="this.src='image_1.png'" alt="عطور النساء">
-      عطور النساء
+      <img src="images/image_1.png" onerror="this.src='image_1.png'" alt="Parfums Femmes">
+      Femmes ♀️
     </button>
   </div>
 
@@ -703,55 +703,55 @@
 
     <!-- ================= 1. Welcome Landing Section ================= -->
     <section class="welcome-section" id="welcomeSection">
-      <h2>مرحباً بكم في عالم <span>G-TESTER</span></h2>
-      <p>وجهتكم الأولى لأفخم العطور الشرقية والعالمية المستوردة. نضمن لكم الجودة العالية، الأصالة، وثبات الروائح الذي يدوم طويلاً.</p>
+      <h2>Bienvenue dans l'univers de <span>G-TESTER</span></h2>
+      <p>Votre première destination pour les parfums orientaux et internationaux de luxe. Nous vous garantissons une haute qualité, de l'authenticité et une tenue longue durée.</p>
 
-      <!-- فيديو الترويج الاحترافي -->
+      <!-- الفيديو الترويجي -->
       <div class="promo-video-container" id="promoVideoContainer">
         <video autoplay muted loop playsinline>
           <source src="images/skyreels-27951104-1791757463251.mp4" type="video/mp4">
-          متصفحك لا يدعم تشغيل الفيديو.
+          Votre navigateur ne prend pas en charge la lecture de vidéos.
         </video>
       </div>
 
       <!-- البنرات الرئيسية الكبيرة فوق المنتجات لكل قسم -->
       <div class="category-banner-container" id="bannerMen">
-        <img src="images/hommmm.jpeg" onerror="this.src='image_2.png'" alt="عطور الرجال">
+        <img src="images/image_2.png" onerror="this.src='image_2.png'" alt="Parfums Hommes">
       </div>
 
       <div class="category-banner-container" id="bannerWomen">
-        <img src="images/femmmm.PNG" onerror="this.src='image_1.png'" alt="عطور النساء">
+        <img src="images/image_1.png" onerror="this.src='image_1.png'" alt="Parfums Femmes">
       </div>
 
       <div class="category-banner-container" id="bannerDecants">
-        <img src="images/decante.PNG" onerror="this.src='image_3.png'" alt="التقسيمات">
+        <img src="images/image_3.png" onerror="this.src='image_3.png'" alt="Décants">
       </div>
 
       <div class="about-brand">
-        نحن في <strong>G-TESTER</strong> نؤمن بأن العطر هو بصمتك الخاصة التي تعكس شخصيتك وتترك انطباعاً لا يُمحى. نوفر لك تشكيلة مختارة بعناية فائقة من أروع العطور الرجالية والنسائية، بالإضافة إلى خدمة التقسيمات (Decants) الأصلية لتكتشف وتجربة أرقى الدور العالمية والعربية بكل أريحية.
+        Chez <strong>G-TESTER</strong>, nous croyons qu'un parfum est votre signature personnelle qui reflète votre caractère et laisse une impression indélébile. Nous vous proposons une sélection minutieuse de superbes parfums pour hommes et femmes, ainsi qu'un service de décants originaux pour découvrir les plus grandes maisons mondiales en toute liberté.
       </div>
 
-      <!-- بطاقات المميزات (ستظهر فقط في الصفحة الرئيسية) -->
+      <!-- بطاقات المميزات -->
       <div class="features-grid" id="featuresGrid">
         <div class="feature-card">
           <div class="icon">✨</div>
-          <h4>أصالة وثبات</h4>
-          <p>عطور مركزة ومختارة بعناية تدوم طوال اليوم.</p>
+          <h4>Authenticité & Tenue</h4>
+          <p>Parfums concentrés et soigneusement sélectionnés qui durent toute la journée.</p>
         </div>
         <div class="feature-card">
           <div class="icon">🎁</div>
-          <h4>هدايا متميزة</h4>
-          <p>هدية قيمة ومميزة مرفقة مع العطور المختارة.</p>
+          <h4>Cadeaux Exclusifs</h4>
+          <p>Un cadeau précieux et unique offert avec vos parfums sélectionnés.</p>
         </div>
         <div class="feature-card">
           <div class="icon">🚚</div>
-          <h4>توصيل مجاني</h4>
-          <p>خدمة التوصيل السريع لجميع مدن المغرب.</p>
+          <h4>Livraison Gratuite</h4>
+          <p>Service de livraison rapide dans toutes les villes du Maroc.</p>
         </div>
         <div class="feature-card">
           <div class="icon">💵</div>
-          <h4>الدفع عند الاستلام</h4>
-          <p>افحص طلبك وتأكد منه قبل إتمام عملية الدفع.</p>
+          <h4>Paiement à la Livraison</h4>
+          <p>Vérifiez votre commande avant d'effectuer le paiement.</p>
         </div>
       </div>
     </section>
@@ -768,12 +768,12 @@
           <div class="product-info">
             <div>
               <h3>Musamam Black Intense</h3>
-              <p>Lattafa - عطر فاخر بنفحات العنبر واللافندر والليمون المنعش.</p>
+              <p>Lattafa - Un parfum luxueux aux notes d'ambre, de lavande et de citron frais.</p>
             </div>
             <div>
               <div class="price">299 DH</div>
               <button class="add-btn" onclick="addToCart('Musamam Black Intense', 299)">
-                أضف إلى السلة
+                Ajouter au panier
               </button>
             </div>
           </div>
@@ -784,12 +784,12 @@
           <div class="product-info">
             <div>
               <h3>Asad Elixir</h3>
-              <p>Lattafa - نفحات توابل دافئة وأخشاب عميقة تعكس الفخامة.</p>
+              <p>Lattafa - Notes d'épices chaleureuses et de bois profonds reflétant le luxe.</p>
             </div>
             <div>
               <div class="price">199 DH</div>
               <button class="add-btn" onclick="addToCart('Asad Elixir', 199)">
-                أضف إلى السلة
+                Ajouter au panier
               </button>
             </div>
           </div>
@@ -800,12 +800,12 @@
           <div class="product-info">
             <div>
               <h3>Khamrah Qahwa</h3>
-              <p>Lattafa - لمسات من القهوة الدافئة والقرفة والمارشميلو.</p>
+              <p>Lattafa - Touches de café chaud, de cannelle et de guimauve.</p>
             </div>
             <div>
               <div class="price">249 DH</div>
               <button class="add-btn" onclick="addToCart('Khamrah Qahwa', 249)">
-                أضف إلى السلة
+                Ajouter au panier
               </button>
             </div>
           </div>
@@ -816,12 +816,12 @@
           <div class="product-info">
             <div>
               <h3>Khamrah Classic</h3>
-              <p>Lattafa - مزيج شرقي غني برائحة التمر والفانيليا والقرفة.</p>
+              <p>Lattafa - Mélange oriental riche aux notes de datte, vanille et cannelle.</p>
             </div>
             <div>
               <div class="price">249 DH</div>
               <button class="add-btn" onclick="addToCart('Khamrah Classic', 249)">
-                أضف إلى السلة
+                Ajouter au panier
               </button>
             </div>
           </div>
@@ -832,12 +832,12 @@
           <div class="product-info">
             <div>
               <h3>Urban Man Paradise</h3>
-              <p>عطر استوائي منعش بجوز الهند والتين وأوراق النعناع.</p>
+              <p>Un parfum tropical rafraîchissant à la noix de coco, figue et menthe.</p>
             </div>
             <div>
               <div class="price">199 DH</div>
               <button class="add-btn" onclick="addToCart('Urban Man Paradise', 199)">
-                أضف إلى السلة
+                Ajouter au panier
               </button>
             </div>
           </div>
@@ -848,12 +848,12 @@
           <div class="product-info">
             <div>
               <h3>Maison Asrar - Cascade</h3>
-              <p>تصميم وأريج بحري منعش بإحساس الأنعاش والتميز.</p>
+              <p>Un sillage aquatique rafraîchissant procurant fraîcheur et distinction.</p>
             </div>
             <div>
               <div class="price">350 DH</div>
               <button class="add-btn" onclick="addToCart('Maison Asrar - Cascade', 350)">
-                أضف إلى السلة
+                Ajouter au panier
               </button>
             </div>
           </div>
@@ -864,12 +864,12 @@
           <div class="product-info">
             <div>
               <h3>Maison Asrar - Wadi</h3>
-              <p>رائحة مائية وعشبية خضراء تعطي شعوراً بالنقاء والهدوء.</p>
+              <p>Arôme aquatique et vert herbacé donnant une sensation de pureté.</p>
             </div>
             <div>
               <div class="price">350 DH</div>
               <button class="add-btn" onclick="addToCart('Maison Asrar - Wadi', 350)">
-                أضف إلى السلة
+                Ajouter au panier
               </button>
             </div>
           </div>
@@ -880,12 +880,12 @@
           <div class="product-info">
             <div>
               <h3>Maison Asrar - Tornado</h3>
-              <p>عطر شرقي دافئ بنفحات الفواكه الداكنة والأخشاب الأنيقة.</p>
+              <p>Parfum oriental chaleureux aux notes de fruits noirs et bois élégants.</p>
             </div>
             <div>
               <div class="price">350 DH</div>
               <button class="add-btn" onclick="addToCart('Maison Asrar - Tornado', 350)">
-                أضف إلى السلة
+                Ajouter au panier
               </button>
             </div>
           </div>
@@ -899,10 +899,10 @@
           <div class="product-info">
             <div>
               <h3>Valentino - Coral Fantasy</h3>
-              <p>نفحات التفاح الأحمر والتوابل والتبغ المنعش.</p>
+              <p>Notes de pomme rouge, épices et tabac rafraîchissant.</p>
               
               <div class="volume-selector">
-                <label>الحجم:</label>
+                <label>Format:</label>
                 <select class="volume-select" id="vol-valentino" onchange="updatePrice(this, 'price-valentino', 80, 150)">
                   <option value="5ml">5ml (80 DH)</option>
                   <option value="10ml" selected>10ml (150 DH)</option>
@@ -912,7 +912,7 @@
             <div>
               <div class="price" id="price-valentino">150 DH</div>
               <button class="add-btn" onclick="addDecantToCart('Valentino - Coral Fantasy', 'vol-valentino', 'price-valentino')">
-                أضف إلى السلة
+                Ajouter au panier
               </button>
             </div>
           </div>
@@ -923,10 +923,10 @@
           <div class="product-info">
             <div>
               <h3>Stronger With You Intensely</h3>
-              <p>مزيج دافئ من الفانيليا، العنبر، والتوابل الفاخرة.</p>
+              <p>Mélange chaleureux de vanille, d'ambre et d'épices luxueuses.</p>
               
               <div class="volume-selector">
-                <label>الحجم:</label>
+                <label>Format:</label>
                 <select class="volume-select" id="vol-intensely" onchange="updatePrice(this, 'price-intensely', 85, 160)">
                   <option value="5ml">5ml (85 DH)</option>
                   <option value="10ml" selected>10ml (160 DH)</option>
@@ -936,7 +936,7 @@
             <div>
               <div class="price" id="price-intensely">160 DH</div>
               <button class="add-btn" onclick="addDecantToCart('Stronger With You Intensely', 'vol-intensely', 'price-intensely')">
-                أضف إلى السلة
+                Ajouter au panier
               </button>
             </div>
           </div>
@@ -947,10 +947,10 @@
           <div class="product-info">
             <div>
               <h3>Le Male Elixir</h3>
-              <p>Jean Paul Gaultier - العسل، الفانيليا والعنبر الجريء.</p>
+              <p>Jean Paul Gaultier - Miel, vanille et ambre audacieux.</p>
               
               <div class="volume-selector">
-                <label>الحجم:</label>
+                <label>Format:</label>
                 <select class="volume-select" id="vol-elixir" onchange="updatePrice(this, 'price-elixir', 95, 180)">
                   <option value="5ml">5ml (95 DH)</option>
                   <option value="10ml" selected>10ml (180 DH)</option>
@@ -960,7 +960,7 @@
             <div>
               <div class="price" id="price-elixir">180 DH</div>
               <button class="add-btn" onclick="addDecantToCart('Le Male Elixir', 'vol-elixir', 'price-elixir')">
-                أضف إلى السلة
+                Ajouter au panier
               </button>
             </div>
           </div>
@@ -971,10 +971,10 @@
           <div class="product-info">
             <div>
               <h3>Dior Homme Intense</h3>
-              <p>أناقة الأخشاب الفاخرة مع نفحات السوسن الساحرة.</p>
+              <p>L'élégance de bois luxueux mêlée aux notes envoûtantes d'iris.</p>
               
               <div class="volume-selector">
-                <label>الحجم:</label>
+                <label>Format:</label>
                 <select class="volume-select" id="vol-dior" onchange="updatePrice(this, 'price-dior', 100, 190)">
                   <option value="5ml">5ml (100 DH)</option>
                   <option value="10ml" selected>10ml (190 DH)</option>
@@ -984,7 +984,7 @@
             <div>
               <div class="price" id="price-dior">190 DH</div>
               <button class="add-btn" onclick="addDecantToCart('Dior Homme Intense', 'vol-dior', 'price-dior')">
-                أضف إلى السلة
+                Ajouter au panier
               </button>
             </div>
           </div>
@@ -995,10 +995,10 @@
           <div class="product-info">
             <div>
               <h3>Stronger With You Absolutely</h3>
-              <p>Rum, Cedarwood & Vanilla - عبير جريء ودافئ لا يُقاوم.</p>
+              <p>Rhum, cèdre et vanille - Un sillage audacieux et chaleureux irrésistible.</p>
               
               <div class="volume-selector">
-                <label>الحجم:</label>
+                <label>Format:</label>
                 <select class="volume-select" id="vol-absolutely" onchange="updatePrice(this, 'price-absolutely', 90, 170)">
                   <option value="5ml">5ml (90 DH)</option>
                   <option value="10ml" selected>10ml (170 DH)</option>
@@ -1008,7 +1008,7 @@
             <div>
               <div class="price" id="price-absolutely">170 DH</div>
               <button class="add-btn" onclick="addDecantToCart('Stronger With You Absolutely', 'vol-absolutely', 'price-absolutely')">
-                أضف إلى السلة
+                Ajouter au panier
               </button>
             </div>
           </div>
@@ -1019,10 +1019,10 @@
           <div class="product-info">
             <div>
               <h3>Stronger With You Powerfully</h3>
-              <p>نفحات جلدية وعميقة تعكس القوة والأناقة الفائقة.</p>
+              <p>Notes cuirées et profondes reflétant force et élégance suprême.</p>
               
               <div class="volume-selector">
-                <label>الحجم:</label>
+                <label>Format:</label>
                 <select class="volume-select" id="vol-powerfully" onchange="updatePrice(this, 'price-powerfully', 90, 175)">
                   <option value="5ml">5ml (90 DH)</option>
                   <option value="10ml" selected>10ml (175 DH)</option>
@@ -1032,7 +1032,7 @@
             <div>
               <div class="price" id="price-powerfully">175 DH</div>
               <button class="add-btn" onclick="addDecantToCart('Stronger With You Powerfully', 'vol-powerfully', 'price-powerfully')">
-                أضف إلى السلة
+                Ajouter au panier
               </button>
             </div>
           </div>
@@ -1047,14 +1047,14 @@
           <div class="product-info">
             <div>
               <h3>YARA CANDY</h3>
-              <p>Lattafa - عطر نسائي ساحر بنفحات الحلوى والفواكه المنعشة.</p>
+              <p>Lattafa - Parfum féminin enchanteur aux notes de bonbon et fruits frais.</p>
             </div>
             <div>
               <div class="price">
                 209 DH <span class="old-price">249 DH</span>
               </div>
               <button class="add-btn" onclick="addToCart('YARA CANDY', 209)">
-                أضف إلى السلة
+                Ajouter au panier
               </button>
             </div>
           </div>
@@ -1066,14 +1066,14 @@
           <div class="product-info">
             <div>
               <h3>YARA TOUS</h3>
-              <p>Lattafa - مزيج استوائي من المانجو والجوز الهند والزهور البيضاء.</p>
+              <p>Lattafa - Mélange tropical de mangue, noix de coco et fleurs blanches.</p>
             </div>
             <div>
               <div class="price">
                 209 DH <span class="old-price">249 DH</span>
               </div>
               <button class="add-btn" onclick="addToCart('YARA TOUS', 209)">
-                أضف إلى السلة
+                Ajouter au panier
               </button>
             </div>
           </div>
@@ -1085,14 +1085,14 @@
           <div class="product-info">
             <div>
               <h3>URBAN WOMEN</h3>
-              <p>عطر أنثوي منعش برائحة الزهور الاستوائية والفانيليا.</p>
+              <p>Parfum féminin rafraîchissant aux fleurs tropicales et à la vanille.</p>
             </div>
             <div>
               <div class="price">
                 219 DH <span class="old-price">259 DH</span>
               </div>
               <button class="add-btn" onclick="addToCart('URBAN WOMEN', 219)">
-                أضف إلى السلة
+                Ajouter au panier
               </button>
             </div>
           </div>
@@ -1104,14 +1104,14 @@
           <div class="product-info">
             <div>
               <h3>KHAIR CONFECTION</h3>
-              <p>Paris Corner - توليفة شرقية راقية بالمارشميلو والفانيليا.</p>
+              <p>Paris Corner - Accord oriental raffiné de guimauve et vanille.</p>
             </div>
             <div>
               <div class="price">
                 219 DH <span class="old-price">259 DH</span>
               </div>
               <button class="add-btn" onclick="addToCart('KHAIR CONFECTION', 219)">
-                أضف إلى السلة
+                Ajouter au panier
               </button>
             </div>
           </div>
@@ -1123,14 +1123,14 @@
           <div class="product-info">
             <div>
               <h3>KHAIR FUSION</h3>
-              <p>Paris Corner - عبق فواكه داكنة مع نفحات فخمة تدوم طويلاً.</p>
+              <p>Paris Corner - Fruits noirs sombres aux notes somptueuses et durables.</p>
             </div>
             <div>
               <div class="price">
                 219 DH <span class="old-price">259 DH</span>
               </div>
               <button class="add-btn" onclick="addToCart('KHAIR FUSION', 219)">
-                أضف إلى السلة
+                Ajouter au panier
               </button>
             </div>
           </div>
@@ -1142,14 +1142,14 @@
           <div class="product-info">
             <div>
               <h3>HEIBAH</h3>
-              <p>عطر الهيبة - رائحة تليق بهيبتك مع نفحات شرقية فاخرة.</p>
+              <p>Parfum Heibah - Une senteur digne de votre prestance aux notes orientales.</p>
             </div>
             <div>
               <div class="price">
                 149 DH <span class="old-price">179 DH</span>
               </div>
               <button class="add-btn" onclick="addToCart('HEIBAH', 149)">
-                أضف إلى السلة
+                Ajouter au panier
               </button>
             </div>
           </div>
@@ -1161,14 +1161,14 @@
           <div class="product-info">
             <div>
               <h3>MARSHMALLOW BLUSH</h3>
-              <p>عبير أنثوي دافئ برائحة المارشميلو والفراولة اللذيذة.</p>
+              <p>Sillage féminin chaleureux aux arômes de guimauve et fraise.</p>
             </div>
             <div>
               <div class="price">
                 279 DH <span class="old-price">309 DH</span>
               </div>
               <button class="add-btn" onclick="addToCart('MARSHMALLOW BLUSH', 279)">
-                أضف إلى السلة
+                Ajouter au panier
               </button>
             </div>
           </div>
@@ -1180,14 +1180,14 @@
           <div class="product-info">
             <div>
               <h3>ELYSIA-ARABE ROUGE</h3>
-              <p>نفحات دافئة من الأخشاب والعنبر لمظهر أنثوي جذاب.</p>
+              <p>Notes chaleudes de bois et d'ambre pour un look féminin séduisant.</p>
             </div>
             <div>
               <div class="price">
                 179 DH <span class="old-price">199 DH</span>
               </div>
               <button class="add-btn" onclick="addToCart('ELYSIA-ARABE ROUGE', 179)">
-                أضف إلى السلة
+                Ajouter au panier
               </button>
             </div>
           </div>
@@ -1199,14 +1199,14 @@
           <div class="product-info">
             <div>
               <h3>ELYSIA-MARSHMALLOW</h3>
-              <p>عطر هادئ ومميز بمزيج المارشميلو والزهور النعمة.</p>
+              <p>Un parfum apaisant combinant guimauve et délicates fleurs.</p>
             </div>
             <div>
               <div class="price">
                 179 DH <span class="old-price">199 DH</span>
               </div>
               <button class="add-btn" onclick="addToCart('ELYSIA-MARSHMALLOW', 179)">
-                أضف إلى السلة
+                Ajouter au panier
               </button>
             </div>
           </div>
@@ -1221,32 +1221,32 @@
   <div class="cart-overlay" id="cartOverlay">
     <div class="cart-modal">
       <button class="close-cart" onclick="toggleCartModal(false)">✕</button>
-      <h2>🛒 سلة المشتريات</h2>
+      <h2>🛒 Panier d'achats</h2>
 
       <div class="cart-items" id="cartItems">
-        <p style="color:#89919b; text-align: center;">السلة فارغة حاليا.</p>
+        <p style="color:#89919b; text-align: center;">Le panier est actuellement vide.</p>
       </div>
 
       <div class="total">
-        المجموع: <span id="total" style="color: #e63946;">0</span> DH
+        Total : <span id="total" style="color: #e63946;">0</span> DH
       </div>
 
       <!-- Customer Form inside Modal -->
       <section class="order-form">
-        <h2>📦 تأكيد الطلب (الدفع عند الاستلام)</h2>
+        <h2>📦 Confirmer la commande (Paiement à la livraison)</h2>
 
         <form id="orderForm">
           <div class="form-grid">
-            <input type="text" id="name" placeholder="الاسم الكامل" required>
-            <input type="tel" id="phone" placeholder="رقم الهاتف (مثال: 0719260682)" required>
-            <input type="text" id="city" placeholder="المدينة" required>
-            <input type="text" id="address" placeholder="العنوان" required>
+            <input type="text" id="name" placeholder="Nom complet" required>
+            <input type="tel" id="phone" placeholder="Téléphone (ex: 0719260682)" required>
+            <input type="text" id="city" placeholder="Ville" required>
+            <input type="text" id="address" placeholder="Adresse" required>
           </div>
 
-          <textarea id="note" placeholder="ملاحظة إضافية (اختياري)"></textarea>
+          <textarea id="note" placeholder="Remarque supplémentaire (optionnel)"></textarea>
 
           <button class="submit-btn" type="submit">
-            💬 تأكيد الطلب عبر واتساب
+            💬 Confirmer la commande sur WhatsApp
           </button>
         </form>
       </section>
@@ -1254,14 +1254,14 @@
   </div>
 
   <!-- Floating WhatsApp Button -->
-  <a href="https://wa.me/212719260682" class="whatsapp-float" target="_blank" title="تواصل معنا عبر واتساب">
+  <a href="https://wa.me/212719260682" class="whatsapp-float" target="_blank" title="Contactez-nous sur WhatsApp">
     💬
   </a>
 
-  <div id="toast">تمت إضافة العطر إلى السلة بنجاح! 🛍️</div>
+  <div id="toast">Parfum ajouté au panier avec succès ! 🛍️</div>
 
   <footer>
-    ©️ 2026 G-TESTER FRAGRANCE COLLECTION — جميع الحقوق محفوظة
+    ©️ 2026 G-TESTER FRAGRANCE COLLECTION — Tous droits réservés
   </footer>
 
   <script>
@@ -1318,11 +1318,11 @@
         welcomeSection.style.display = 'block';
         productsWrapper.classList.add('hide');
         promoVideo.style.display = 'block';
-        featuresGrid.style.display = 'grid'; // إظهار بطاقات المميزات في الرئيسية
+        featuresGrid.style.display = 'grid';
       } else {
         welcomeSection.style.display = 'block';
         productsWrapper.classList.remove('hide');
-        featuresGrid.style.display = 'none'; // إخفاء بطاقات المميزات في باقي الصفحات
+        featuresGrid.style.display = 'none';
 
         if (category === 'men') {
           bannerMen.classList.add('active');
@@ -1401,7 +1401,7 @@
       }
 
       saveAndUpdateCart();
-      showToast(`تمت إضافة "${name}" إلى السلة!`);
+      showToast(`"${name}" a été ajouté au panier !`);
     }
 
     function changeQuantity(index, change) {
@@ -1435,7 +1435,7 @@
       let count = 0;
 
       if (cart.length === 0) {
-        cartItems.innerHTML = '<p style="color:#8f98a3; text-align: center;">السلة فارغة حاليا.</p>';
+        cartItems.innerHTML = '<p style="color:#8f98a3; text-align: center;">Le panier est actuellement vide.</p>';
       } else {
         cart.forEach((item, index) => {
           const itemTotal = item.price * item.quantity;
@@ -1457,7 +1457,7 @@
 
                 <strong style="margin: 0 15px; color: #e63946;">${itemTotal} DH</strong>
 
-                <button class="remove" onclick="removeFromCart(${index})">حذف</button>
+                <button class="remove" onclick="removeFromCart(${index})">Supprimer</button>
               </div>
             </div>
           `;
@@ -1482,7 +1482,7 @@
       event.preventDefault();
 
       if (cart.length === 0) {
-        alert("المرجو إضافة عطر واحد على الأقل إلى السلة.");
+        alert("Veuillez ajouter au moins un parfum au panier.");
         return;
       }
 
@@ -1492,24 +1492,24 @@
       const address = document.getElementById("address").value;
       const note = document.getElementById("note").value;
 
-      let orderSummary = `✨ *طلب جديد من G-TESTER*\n\n`;
-      orderSummary += `👤 *معلومات الزبون:*\n`;
-      orderSummary += `• الاسم: ${nameVal}\n`;
-      orderSummary += `• الهاتف: ${phone}\n`;
-      orderSummary += `• المدينة: ${city}\n`;
-      orderSummary += `• العنوان: ${address}\n`;
-      if (note) orderSummary += `• ملاحظة: ${note}\n`;
+      let orderSummary = `✨ *Nouvelle commande G-TESTER*\n\n`;
+      orderSummary += `👤 *Informations client :*\n`;
+      orderSummary += `• Nom : ${nameVal}\n`;
+      orderSummary += `• Téléphone : ${phone}\n`;
+      orderSummary += `• Ville : ${city}\n`;
+      orderSummary += `• Adresse : ${address}\n`;
+      if (note) orderSummary += `• Remarque : ${note}\n`;
 
-      orderSummary += `\n🛍️ *العطور المطلوبة:*\n`;
+      orderSummary += `\n🛍️ *Parfums demandés :*\n`;
       let totalAmount = 0;
 
       cart.forEach(item => {
         const itemTotal = item.price * item.quantity;
         totalAmount += itemTotal;
-        orderSummary += `• ${item.name} (${item.quantity}×) - ${itemTotal} DH\n`;
+        orderSummary += `• ${item.name} (${item.quantity}x) - ${itemTotal} DH\n`;
       });
 
-      orderSummary += `\n💰 *المجموع الكلي:* ${totalAmount} DH`;
+      orderSummary += `\n💰 *Montant total :* ${totalAmount} DH`;
 
       const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(orderSummary)}`;
       window.open(whatsappUrl, '_blank');
