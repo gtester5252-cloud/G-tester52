@@ -22,26 +22,28 @@
     .announcement-bar {
       background: #e63946;
       color: #fff;
-      padding: 8px 0;
+      padding: 9px 0;
       font-size: 13px;
       font-weight: bold;
       overflow: hidden;
       white-space: nowrap;
       position: relative;
+      width: 100%;
     }
 
     .announcement-text {
       display: inline-block;
+      white-space: nowrap;
+      animation: marquee 15s linear infinite;
       padding-left: 100%;
-      animation: marquee 12s linear infinite;
     }
 
     @keyframes marquee {
       0% {
-        transform: translateX(-100%);
+        transform: translateX(0);
       }
       100% {
-        transform: translateX(0%);
+        transform: translateX(-100%);
       }
     }
 
@@ -706,10 +708,10 @@
 
 <body>
 
-  <!-- Top Moving Bar -->
+  <!-- Top Moving Bar (Marquee Animation) -->
   <div class="announcement-bar">
     <div class="announcement-text">
-      🚚 Livraison gratuite à Salé et Rabat 🇲🇦 • Paiement à la livraison
+      🚚 Livraison gratuite à Salé et Rabat 🇲🇦 • Paiement à la livraison &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 🚚 Livraison gratuite à Salé et Rabat 🇲🇦 • Paiement à la livraison
     </div>
   </div>
 
@@ -941,6 +943,30 @@
 
         <!-- Décants -->
         
+        <div class="product" data-category="decants" data-name="Le Beau Le Parfum Jean Paul Gaultier" onclick="openProductModal('Le Beau Le Parfum - JPG', '180 DH', 'image_4.png', 'Décant officiel. Une fragrance boisée ambrée irrésistible mêlant noix de coco, bois de santal et fève tonka.')">
+          <img src="images/le beau le parfum.jpeg" onerror="this.onerror=null; this.src='image_4.png';" alt="Le Beau Le Parfum">
+          <div class="product-info">
+            <div>
+              <h3>Le Beau Le Parfum</h3>
+              <p>JPG - Coco, bois de santal et tonka.</p>
+              
+              <div class="volume-selector" onclick="event.stopPropagation();">
+                <label>Format:</label>
+                <select class="volume-select" id="vol-lebeau" onchange="updatePrice(this, 'price-lebeau', 95, 180)">
+                  <option value="5ml">5ml (95 DH)</option>
+                  <option value="10ml" selected>10ml (180 DH)</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <div class="price" id="price-lebeau">180 DH</div>
+              <button class="add-btn" onclick="event.stopPropagation(); addDecantToCart('Le Beau Le Parfum - JPG', 'vol-lebeau', 'price-lebeau')">
+                Ajouter au panier
+              </button>
+            </div>
+          </div>
+        </div>
+
         <div class="product" data-category="decants" data-name="Valentino Born in Roma Coral Fantasy" onclick="openProductModal('Valentino - Coral Fantasy', '150 DH', 'images/Valentino - uomo born in roma Intense.jpeg', 'Décant officiel. Un mélange vibrant de pomme rouge, sauge et tabac intense.')">
           <img src="images/Valentino - uomo born in roma Intense.jpeg" onerror="this.onerror=null; this.src='images/valentino.jpg';" alt="Valentino Coral Fantasy">
           <div class="product-info">
