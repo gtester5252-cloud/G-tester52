@@ -93,7 +93,7 @@
       box-shadow: 0 0 15px rgba(230, 57, 70, 0.2);
     }
 
-    /* Category Nav */
+    /* Category Nav with Image Icons */
     .category-nav {
       display: flex;
       justify-content: center;
@@ -106,12 +106,25 @@
       background: #141419;
       color: #b0b0b8;
       border: 1px solid #281a1e;
-      padding: 10px 24px;
+      padding: 8px 20px;
       border-radius: 25px;
       font-weight: bold;
       cursor: pointer;
       transition: .3s;
       font-size: 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Styling for small icon images in navigation */
+    .btn-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid #e63946;
+      display: inline-block;
     }
 
     .filter-btn:hover, .filter-btn.active {
@@ -153,8 +166,8 @@
       line-height: 1.8;
     }
 
-    /* Promo Video & Custom Category Banners Styling */
-    .promo-video-container, .category-banner-container {
+    /* Promo Video Styling */
+    .promo-video-container {
       margin: 25px auto 30px;
       width: 100%;
       max-width: 650px;
@@ -164,21 +177,10 @@
       box-shadow: 0 10px 30px rgba(230, 57, 70, 0.2);
     }
 
-    .promo-video-container video, .category-banner-container img {
+    .promo-video-container video {
       width: 100%;
       display: block;
       border-radius: 16px;
-      height: auto;
-      max-height: 400px;
-      object-fit: cover;
-    }
-
-    .category-banner-container {
-      display: none;
-    }
-
-    .category-banner-container.active {
-      display: block;
     }
 
     .about-brand {
@@ -619,12 +621,26 @@
     <input type="text" id="searchInput" class="search-input" placeholder="🔍 ابحث عن العطر الذي تفضله..." onkeyup="searchProducts()">
   </div>
 
-  <!-- Category Nav -->
+  <!-- Category Nav with Image Icons -->
   <div class="category-nav">
-    <button class="filter-btn active" onclick="filterCategory('welcome', this)">الرئيسية ✨</button>
-    <button class="filter-btn" onclick="filterCategory('men', this)">عطور الرجال ♂️</button>
-    <button class="filter-btn" onclick="filterCategory('decants', this)">التقسيمات 🌟</button>
-    <button class="filter-btn" onclick="filterCategory('women', this)">عطور النساء ♀️</button>
+    <button class="filter-btn active" onclick="filterCategory('welcome', this)">
+      الرئيسية ✨
+    </button>
+    
+    <button class="filter-btn" onclick="filterCategory('men', this)">
+      <img src="image_2.png" alt="عطور الرجال" class="btn-icon">
+      عطور الرجال
+    </button>
+
+    <button class="filter-btn" onclick="filterCategory('decants', this)">
+      <img src="image_3.png" alt="التقسيمات" class="btn-icon">
+      التقسيمات
+    </button>
+
+    <button class="filter-btn" onclick="filterCategory('women', this)">
+      <img src="image_1.png" alt="عطور النساء" class="btn-icon">
+      عطور النساء
+    </button>
   </div>
 
   <main class="container">
@@ -640,21 +656,6 @@
           <source src="images/skyreels-27951104-1791757463251.mp4" type="video/mp4">
           متصفحك لا يدعم تشغيل الفيديو.
         </video>
-      </div>
-
-      <!-- صورة عطور الرجال -->
-      <div class="category-banner-container" id="bannerMen">
-        <img src="images/hommmm.jpeg" alt="عطور الرجال">
-      </div>
-
-      <!-- صورة عطور النساء -->
-      <div class="category-banner-container" id="bannerWomen">
-        <img src="images/femmmm.PNG" alt="عطور النساء">
-      </div>
-
-      <!-- صورة التقسيمات -->
-      <div class="category-banner-container" id="bannerDecants">
-        <img src="images/decante.PNG" alt="التقسيمات Decants">
       </div>
 
       <div class="about-brand">
@@ -1221,42 +1222,22 @@
       addToCart(fullName, price);
     }
 
-    // Filter Categories with banner toggling
+    // Filter Categories
     function filterCategory(category, btnElement) {
       const welcomeSection = document.getElementById('welcomeSection');
       const productsWrapper = document.getElementById('productsWrapper');
       const products = document.querySelectorAll('.product');
       const buttons = document.querySelectorAll('.filter-btn');
 
-      const promoVideo = document.getElementById('promoVideoContainer');
-      const bannerMen = document.getElementById('bannerMen');
-      const bannerWomen = document.getElementById('bannerWomen');
-      const bannerDecants = document.getElementById('bannerDecants');
-
       buttons.forEach(btn => btn.classList.remove('active'));
       if(btnElement) btnElement.classList.add('active');
-
-      // Reset banners visibility inside welcome section
-      promoVideo.style.display = 'none';
-      bannerMen.classList.remove('active');
-      bannerWomen.classList.remove('active');
-      bannerDecants.classList.remove('active');
 
       if (category === 'welcome') {
         welcomeSection.style.display = 'block';
         productsWrapper.classList.add('hide');
-        promoVideo.style.display = 'block';
       } else {
-        welcomeSection.style.display = 'block';
+        welcomeSection.style.display = 'none';
         productsWrapper.classList.remove('hide');
-
-        if (category === 'men') {
-          bannerMen.classList.add('active');
-        } else if (category === 'women') {
-          bannerWomen.classList.add('active');
-        } else if (category === 'decants') {
-          bannerDecants.classList.add('active');
-        }
 
         products.forEach(product => {
           if (product.getAttribute('data-category') === category) {
@@ -1275,10 +1256,6 @@
       const welcomeSection = document.getElementById('welcomeSection');
       const products = document.querySelectorAll('.product');
       const buttons = document.querySelectorAll('.filter-btn');
-      const promoVideo = document.getElementById('promoVideoContainer');
-      const bannerMen = document.getElementById('bannerMen');
-      const bannerWomen = document.getElementById('bannerWomen');
-      const bannerDecants = document.getElementById('bannerDecants');
 
       if (input.trim() !== "") {
         welcomeSection.style.display = 'none';
@@ -1297,10 +1274,6 @@
         // If search is empty, return to welcome view
         welcomeSection.style.display = 'block';
         productsWrapper.classList.add('hide');
-        promoVideo.style.display = 'block';
-        bannerMen.classList.remove('active');
-        bannerWomen.classList.remove('active');
-        bannerDecants.classList.remove('active');
         buttons[0].classList.add('active');
       }
     }
