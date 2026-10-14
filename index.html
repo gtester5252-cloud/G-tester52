@@ -1145,6 +1145,30 @@
 
 
         <!-- عطور الرجال في قسم Décants مع تقسيم 5ml / 10ml -->
+           <div class="product" data-category="decants" data-name="Musamam Black Intense Decant" onclick="openProductModal('Musamam Black Intense (Décant)', '35 DH', 'images/Musamam Black Intense.jpeg', 'Décant Lattafa Musamam Black Intense - Lavande, bergamote et bois précieux.')">
+          <img src="images/Musamam Black Intense.jpeg" onerror="this.onerror=null; this.src='Musamam Black Intense.jpeg';" alt="Musamam Black Intense Decant">
+          <div class="product-info">
+            <div>
+              <h3>Musamam Black Intense</h3>
+              <p>Décant Lattafa - Ambre & lavande.</p>
+              
+              <div class="volume-selector" onclick="event.stopPropagation();">
+                <label>Format:</label>
+                <select class="volume-select" id="vol-musamam" onchange="updatePrice(this, 'price-musamam', 20, 35)">
+                  <option value="5ml">5ml (20 DH)</option>
+                  <option value="10ml" selected>10ml (35 DH)</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <div class="price" id="price-musamam">35 DH</div>
+              <button class="add-btn" onclick="event.stopPropagation(); addDecantToCart('Musamam Black Intense', 'vol-musamam', 'price-musamam')">
+                Ajouter au panier
+              </button>
+            </div>
+          </div>
+        </div>
+       
         <div class="product" data-category="decants" data-name="Asad Bourbon Decant" onclick="openProductModal('Asad Bourbon (Décant)', '25 DH', 'images/asad bourbon.jpeg', 'Décant Lattafa Asad Bourbon - Notes chaleureuses de bourbon, ambre et épices.')">
           <img src="images/asad bourbon.jpeg" onerror="this.onerror=null; this.src='image_5.png';" alt="Asad Bourbon Decant">
           <div class="product-info">
@@ -1187,30 +1211,6 @@
             <div>
               <div class="price" id="price-asadblack">25 DH</div>
               <button class="add-btn" onclick="event.stopPropagation(); addDecantToCart('Asad Black', 'vol-asadblack', 'price-asadblack')">
-                Ajouter au panier
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="product" data-category="decants" data-name="Musamam Black Intense Decant" onclick="openProductModal('Musamam Black Intense (Décant)', '35 DH', 'images/Musamam Black Intense.jpeg', 'Décant Lattafa Musamam Black Intense - Lavande, bergamote et bois précieux.')">
-          <img src="images/Musamam Black Intense.jpeg" onerror="this.onerror=null; this.src='Musamam Black Intense.jpeg';" alt="Musamam Black Intense Decant">
-          <div class="product-info">
-            <div>
-              <h3>Musamam Black Intense</h3>
-              <p>Décant Lattafa - Ambre & lavande.</p>
-              
-              <div class="volume-selector" onclick="event.stopPropagation();">
-                <label>Format:</label>
-                <select class="volume-select" id="vol-musamam" onchange="updatePrice(this, 'price-musamam', 20, 35)">
-                  <option value="5ml">5ml (20 DH)</option>
-                  <option value="10ml" selected>10ml (35 DH)</option>
-                </select>
-              </div>
-            </div>
-            <div>
-              <div class="price" id="price-musamam">35 DH</div>
-              <button class="add-btn" onclick="event.stopPropagation(); addDecantToCart('Musamam Black Intense', 'vol-musamam', 'price-musamam')">
                 Ajouter au panier
               </button>
             </div>
