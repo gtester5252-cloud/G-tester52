@@ -844,22 +844,6 @@
           </div>
         </div>
 
-        <div class="product" data-category="men" data-name="Musamam Black Intense Lattafa" onclick="openProductModal('Musamam Black Intense', '299 DH', 'images/Musamam Black Intense.jpeg', 'Un parfum oriental boisé envoûtant combinant lavande, bergamote et épices avec un fond riche en ambre et bois précieux.')">
-          <img src="images/Musamam Black Intense.jpeg" onerror="this.onerror=null; this.src='Musamam Black Intense.jpeg';" alt="Musamam Black Intense">
-          <div class="product-info">
-            <div>
-              <h3>Musamam Black Intense</h3>
-              <p>Lattafa - Ambre, lavande et citron frais.</p>
-            </div>
-            <div>
-              <div class="price">299 DH</div>
-              <button class="add-btn" onclick="event.stopPropagation(); addToCart('Musamam Black Intense', 299)">
-                Ajouter au panier
-              </button>
-            </div>
-          </div>
-        </div>
-
         <div class="product" data-category="men" data-name="Asad Elixir Lattafa" onclick="openProductModal('Asad Elixir', '199 DH', 'images/Asad Elixir.jpeg', 'Un parfum masculin charismatique aux notes chaudes de poivre noir, tabac et ambre intense.')">
           <img src="images/Asad Elixir.jpeg" onerror="this.onerror=null; this.src='Asad Elixir.jpg';" alt="Asad Elixir">
           <div class="product-info">
@@ -870,6 +854,21 @@
             <div>
               <div class="price">199 DH</div>
               <button class="add-btn" onclick="event.stopPropagation(); addToCart('Asad Elixir', 199)">
+                Ajouter au panier
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="product" data-category="men" data-name="Musamam Black Intense Lattafa" onclick="openProductModal('Musamam Black Intense', '299 DH', 'images/Musamam Black Intense.jpeg', 'Un parfum oriental boisé envoûtant combinant lavande, bergamote et épices avec un fond riche en ambre et bois précieux.')">
+          <img src="images/Musamam Black Intense.jpeg" onerror="this.onerror=null; this.src='Musamam Black Intense.jpeg';" alt="Musamam Black Intense">
+          <div class="product-info">
+            <div>
+              <h3>Musamam Black Intense</h3>
+              <p>Lattafa - Ambre, lavande et citron frais.</p>
+            </div>
+            <div>
+              <div class="price">299 DH</div>
+              <button class="add-btn" onclick="event.stopPropagation(); addToCart('Musamam Black Intense', 299)">
                 Ajouter au panier
               </button>
             </div>
@@ -1000,6 +999,30 @@
           </div>
         </div>
 
+        <div class="product" data-category="decants" data-name="Le Male Elixir Jean Paul Gaultier" onclick="openProductModal('Le Male Elixir', '180 DH', 'images/le male elixir (10ml).jpeg', 'Décant officiel. Un élixir ambré passionné révélant la menthe, le miel et la fève tonka.')">
+          <img src="images/le male elixir (10ml).jpeg" onerror="this.onerror=null; this.src='images/le_male_elixir.jpg';" alt="Le Male Elixir">
+          <div class="product-info">
+            <div>
+              <h3>Le Male Elixir</h3>
+              <p>JPG - Miel, vanille et ambre.</p>
+              
+              <div class="volume-selector" onclick="event.stopPropagation();">
+                <label>Format:</label>
+                <select class="volume-select" id="vol-elixir" onchange="updatePrice(this, 'price-elixir', 55, 110)">
+                  <option value="5ml">5ml (55 DH)</option>
+                  <option value="10ml" selected>10ml (110 DH)</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <div class="price" id="price-elixir">110 DH</div>
+              <button class="add-btn" onclick="event.stopPropagation(); addDecantToCart('Le Male Elixir', 'vol-elixir', 'price-elixir')">
+                Ajouter au panier
+              </button>
+            </div>
+          </div>
+        </div>
+
         <div class="product" data-category="decants" data-name="Valentino Born in Roma Coral Fantasy" onclick="openProductModal('Valentino - Coral Fantasy', '150 DH', 'images/Valentino - uomo born in roma Intense.jpeg', 'Décant officiel. Un mélange vibrant de pomme rouge, sauge et tabac intense.')">
           <img src="images/Valentino - uomo born in roma Intense.jpeg" onerror="this.onerror=null; this.src='images/valentino.jpg';" alt="Valentino Coral Fantasy">
           <div class="product-info">
@@ -1042,54 +1065,6 @@
             <div>
               <div class="price" id="price-intensely">100 DH</div>
               <button class="add-btn" onclick="event.stopPropagation(); addDecantToCart('Stronger With You Intensely', 'vol-intensely', 'price-intensely')">
-                Ajouter au panier
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="product" data-category="decants" data-name="Le Male Elixir Jean Paul Gaultier" onclick="openProductModal('Le Male Elixir', '180 DH', 'images/le male elixir (10ml).jpeg', 'Décant officiel. Un élixir ambré passionné révélant la menthe, le miel et la fève tonka.')">
-          <img src="images/le male elixir (10ml).jpeg" onerror="this.onerror=null; this.src='images/le_male_elixir.jpg';" alt="Le Male Elixir">
-          <div class="product-info">
-            <div>
-              <h3>Le Male Elixir</h3>
-              <p>JPG - Miel, vanille et ambre.</p>
-              
-              <div class="volume-selector" onclick="event.stopPropagation();">
-                <label>Format:</label>
-                <select class="volume-select" id="vol-elixir" onchange="updatePrice(this, 'price-elixir', 55, 110)">
-                  <option value="5ml">5ml (55 DH)</option>
-                  <option value="10ml" selected>10ml (110 DH)</option>
-                </select>
-              </div>
-            </div>
-            <div>
-              <div class="price" id="price-elixir">110 DH</div>
-              <button class="add-btn" onclick="event.stopPropagation(); addDecantToCart('Le Male Elixir', 'vol-elixir', 'price-elixir')">
-                Ajouter au panier
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="product" data-category="decants" data-name="Dior Homme Intense" onclick="openProductModal('Dior Homme Intense', '190 DH', 'images/dior homme intense (10ml).jpeg', 'Décant officiel. L incarnation du chic masculin avec iris noble, ambrette et bois de cèdre.')">
-          <img src="images/dior homme intense (10ml).jpeg" onerror="this.onerror=null; this.src='images/dior_homme_intense.jpg';" alt="Dior Homme Intense">
-          <div class="product-info">
-            <div>
-              <h3>Dior Homme Intense</h3>
-              <p>Iris de Toscane et bois de cèdre.</p>
-              
-              <div class="volume-selector" onclick="event.stopPropagation();">
-                <label>Format:</label>
-                <select class="volume-select" id="vol-dior" onchange="updatePrice(this, 'price-dior', 55, 110)">
-                  <option value="5ml">5ml (55 DH)</option>
-                  <option value="10ml" selected>10ml (110 DH)</option>
-                </select>
-              </div>
-            </div>
-            <div>
-              <div class="price" id="price-dior">110 DH</div>
-              <button class="add-btn" onclick="event.stopPropagation(); addDecantToCart('Dior Homme Intense', 'vol-dior', 'price-dior')">
                 Ajouter au panier
               </button>
             </div>
@@ -1143,6 +1118,31 @@
             </div>
           </div>
         </div>
+        
+        <div class="product" data-category="decants" data-name="Dior Homme Intense" onclick="openProductModal('Dior Homme Intense', '190 DH', 'images/dior homme intense (10ml).jpeg', 'Décant officiel. L incarnation du chic masculin avec iris noble, ambrette et bois de cèdre.')">
+          <img src="images/dior homme intense (10ml).jpeg" onerror="this.onerror=null; this.src='images/dior_homme_intense.jpg';" alt="Dior Homme Intense">
+          <div class="product-info">
+            <div>
+              <h3>Dior Homme Intense</h3>
+              <p>Iris de Toscane et bois de cèdre.</p>
+              
+              <div class="volume-selector" onclick="event.stopPropagation();">
+                <label>Format:</label>
+                <select class="volume-select" id="vol-dior" onchange="updatePrice(this, 'price-dior', 55, 110)">
+                  <option value="5ml">5ml (55 DH)</option>
+                  <option value="10ml" selected>10ml (110 DH)</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <div class="price" id="price-dior">110 DH</div>
+              <button class="add-btn" onclick="event.stopPropagation(); addDecantToCart('Dior Homme Intense', 'vol-dior', 'price-dior')">
+                Ajouter au panier
+              </button>
+            </div>
+          </div>
+        </div>
+
 
         <!-- عطور الرجال في قسم Décants مع تقسيم 5ml / 10ml -->
         <div class="product" data-category="decants" data-name="Asad Bourbon Decant" onclick="openProductModal('Asad Bourbon (Décant)', '25 DH', 'images/asad bourbon.jpeg', 'Décant Lattafa Asad Bourbon - Notes chaleureuses de bourbon, ambre et épices.')">
